@@ -177,7 +177,7 @@ button { font: inherit; color: inherit; }
   box-shadow: var(--shadow-card); overflow: hidden; max-width: 460px; justify-self: end; width: 100%;
 }
 @media (max-width: 900px) { .offer { justify-self: stretch; max-width: none; } }
-@media (max-width: 600px) { .offer-head { flex-direction: column; align-items: start; gap: var(--s-1); } .offer-head .club { text-align: left; } }
+@media (max-width: 600px) { .offer .offer-head { flex-direction: column; align-items: start; gap: var(--s-1); } .offer .offer-head .club { text-align: left; } }
 .offer-photo { aspect-ratio: 4 / 5; background: linear-gradient(180deg, #eeeeee, #fafafa); position: relative; overflow: hidden; }
 .offer-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 .offer-photo .live { position: absolute; top: var(--s-4); left: var(--s-4); background: var(--bg); padding: 6px 12px 6px 10px; border-radius: 999px; border: 1px solid var(--rule); }
