@@ -5,7 +5,8 @@ import type { NextConfig } from "next";
  *
  * Every page is a captured Framer HTML file at its exact URL path inside
  * `public/`:
- *   /                          → public/index.html
+ *   /                          → src/app/page.tsx (homepage A/B experiment)
+ *   /index.html                → public/index.html (previous Framer mirror)
  *   /about                     → public/about/index.html
  *   /athletes                  → public/athletes/index.html
  *   /avila, /escobar, /ornelas,
@@ -20,6 +21,28 @@ import type { NextConfig } from "next";
  * `vercel.json` sets framework=nextjs so Vercel runs `next build` (rather
  * than treating this as a static-HTML-only project).
  */
-const nextConfig: NextConfig = {};
+const mirrorPages = [
+  "about",
+  "athletes",
+  "avila",
+  "escobar",
+  "ornelas",
+  "padilla",
+  "santos",
+  "teodo",
+  "athlete-landingpage-2026",
+  "legal/terms-of-service",
+  "legal/privacy-policy",
+];
+
+const nextConfig: NextConfig = {
+  allowedDevOrigins: ["127.0.0.1"],
+  async rewrites() {
+    return mirrorPages.map((path) => ({
+      source: `/${path}`,
+      destination: `/${path}/index.html`,
+    }));
+  },
+};
 
 export default nextConfig;
