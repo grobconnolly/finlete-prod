@@ -40,7 +40,7 @@ function Hero() {
           <p className="risk-line">{riskLine}</p>
         </div>
         <div className="hero-media">
-          <AthleteCard offering={avila} layout="feature" />
+          <AthleteCard offering={avila} />
         </div>
       </div>
       <TrustBar />

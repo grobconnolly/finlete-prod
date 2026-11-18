@@ -17,7 +17,7 @@ import {
 import { fundedOfferingCount, openOfferings } from "@/data/offerings";
 import type { VariantSource } from "@/lib/analytics";
 import type { HomepageVariant } from "@/lib/homepage-variant";
-import { AthleteCard } from "./AthleteCard";
+import { OfferingCarousel } from "./OfferingCarousel";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import { StickyCtaBar } from "./StickyCtaBar";
@@ -105,18 +105,16 @@ export function LowerHome() {
       </section>
 
       <section className="band band-sand" id="open-offerings">
-        <div className="wrap cols">
+        <div className="offer-wrap">
           <div className="section-head">
-            <p className="kicker">Open offerings</p>
+            <p className="kicker">Athletes</p>
             <h2>Four careers you can invest in.</h2>
           </div>
-          {openOfferings.map((offering) => (
-            <AthleteCard key={offering.slug} offering={offering} />
-          ))}
+          <OfferingCarousel offerings={openOfferings} />
           <p className="offer-note">
             <span>{fundedOfferingCount} offerings are already fully funded.</span>
             <a className="text-link" href="/athletes">
-              All athletes
+              View all offerings
             </a>
           </p>
         </div>

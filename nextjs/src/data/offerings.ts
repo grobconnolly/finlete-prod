@@ -21,6 +21,8 @@ export type Offering = {
   team: string;
   teamShort: string;
   position: string;
+  /** Full position for the photo chip, e.g. "Pitcher (P)". Empty when unknown. */
+  positionLabel: string;
   rankLabel: string;
   rankShort: string;
   keyStat: string;
@@ -48,6 +50,7 @@ export const offerings: Offering[] = [
     team: "Kansas City Royals",
     teamShort: "Royals",
     position: "P",
+    positionLabel: "Pitcher (P)",
     rankLabel: "#9 Royals prospect",
     rankShort: "#9 prospect",
     keyStat: "MLB debut 2025",
@@ -69,6 +72,7 @@ export const offerings: Offering[] = [
     team: "St. Louis Cardinals",
     teamShort: "Cardinals",
     position: "SS",
+    positionLabel: "Shortstop (SS)",
     rankLabel: "#16 Cardinals prospect",
     rankShort: "#16 prospect",
     keyStat: ".396 OBP (2025)",
@@ -89,6 +93,7 @@ export const offerings: Offering[] = [
     team: "Baltimore Orioles",
     teamShort: "Orioles",
     position: "P",
+    positionLabel: "Pitcher (P)",
     rankLabel: "#6 Orioles prospect",
     rankShort: "#6 prospect",
     keyStat: "102 MPH at 18",
@@ -109,6 +114,7 @@ export const offerings: Offering[] = [
     team: "Six pitchers",
     teamShort: "Six pitchers",
     position: "",
+    positionLabel: "",
     rankLabel: "",
     rankShort: "",
     keyStat: "Six pitchers in one investment",
