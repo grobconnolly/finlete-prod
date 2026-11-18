@@ -63,11 +63,12 @@ on it is black, not white (white fails contrast at 3.1:1; black passes at
 | `--text-muted` | `#5c5c5c` | Secondary text on white (6.7:1). |
 | `--text-on-dark` / `--text-muted-on-dark` | `#f4f4f2` / `#a3a3a3` | Body and secondary text on ink. |
 | `--bg` / `--bg-soft` / `--photo-bg` | `#ffffff` / `#f6f6f5` / `#e6e6e4` | Page / alternate band / behind photos. |
+| `--portrait-top` / `--portrait-bottom` | `#e5e5e5` / `#f2f2f2` | The portraits' own background gradient, continued beside them. |
 | `--rule` / `--rule-strong` / `--rule-on-dark` / `--border-on-dark` | `#e5e5e5` / `#d6d6d3` / `#2a2a2a` / `#5a5a5a` | Rules and borders. |
 | `--track-neutral` | `#6b6b6b` | Card border on hover in the dark band. |
 
-One shadow, on the hero card. One gradient, the scrim under the name on
-the Zazueta photo.
+One shadow, on the hero card. Two gradients: the scrim under the name on
+the Zazueta photo, and the portrait background continued in the cards.
 
 ## Typography
 
@@ -102,15 +103,16 @@ gutter 24px (16px below 600px). Sections 96px desktop, 64px mobile. Radius
    athletes, FAQs, then Sign in and "Browse offerings". Collapses to a
    menu below 960px.
 3. **Hero.** Headline, the approved product line, two buttons, three proof
-   numbers, one risk line. Beside it, a card for an offering that is open
-   now, with its level, team rank, share price, minimum and a button to
-   the offering. Never taller than one viewport on desktop, down to 520px
-   of height.
+   numbers, one risk line. Beside it, a player card for an offering that is
+   open now: name, position and club, two statistics, share price, minimum
+   and a button on the left, and the whole portrait on the right. Never
+   taller than one viewport on desktop, down to 520px of height. Lead with
+   a player whose recent record a fan can look up without being put off.
 4. **Trust band.** Investor and press logos.
 5. **Open offerings.** One card per open offering: photo, name, position
    and club, one fact, share price, minimum, one link covering the card.
    On phones the cards go horizontal (photo left) so four fit in about two
-   screens. Material bad news is stated on the card, not left out.
+   screens. Material news, such as an injury, is stated on the card.
 6. **How it works.** One mission sentence and three steps, each with an
    icon tile.
 7. **Funded athletes.** The top-ranked funded athlete as a photo with a
@@ -124,7 +126,11 @@ gutter 24px (16px below 600px). Sections 96px desktop, 64px mobile. Radius
 ## Imagery and icons
 
 - Black-and-white Finlete portraits with the green slash for open
-  offerings, cropped square (wide in the hero).
+  offerings. Show the **whole figure**, never a face crop: the portraits
+  are tall, so they sit at the right of a 4:5 box (or fill a tall column)
+  with their own background gradient continued beside them
+  (`--portrait-top` to `--portrait-bottom`). Do not scale a portrait to the
+  width of a square or landscape box; that is what makes it look zoomed.
 - Real game photography for the funded spotlight.
 - Three line icons for the steps (1.5px stroke, in a green-100 tile), plus
   the menu toggle, the plus sign on dropdowns and social marks. No others.
