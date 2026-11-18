@@ -20,6 +20,14 @@ import type { NextConfig } from "next";
  * `vercel.json` sets framework=nextjs so Vercel runs `next build` (rather
  * than treating this as a static-HTML-only project).
  */
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      // Static redesign prototype lives in public/redesign; Next.js only
+      // serves public files at their exact path, so map the clean URL.
+      { source: "/redesign", destination: "/redesign/index.html" },
+    ];
+  },
+};
 
 export default nextConfig;
