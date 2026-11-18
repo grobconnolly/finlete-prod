@@ -18,6 +18,7 @@
   <meta name="twitter:description" content="Finlete gives rising players the capital to reach their potential. Investors own a share of their Major League earnings for 25 years.">
   <meta name="twitter:image" content="https://framerusercontent.com/assets/VvIUYmknKipGaDBKgTyhJrlxzI.png">
   <link rel="icon" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="https://framerusercontent.com/images/u0dkmoeP8Ne2PKSIcSgKDdPG3A.png">
   <link rel="preload" href="fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script>
@@ -75,14 +76,14 @@
         <p class="lead">Finlete gives rising players the capital to reach their potential. In return, you own a share of their Major League earnings for 25 years.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#offerings" data-cta="hero_browse">Browse open offerings</a>
-          <a class="btn btn-secondary" href="#returns" data-cta="hero_returns">See potential returns</a>
+          <a class="btn btn-secondary" href="#simulator" data-cta="hero_returns">See potential returns</a>
         </div>
         <dl class="hero-proof">
           <div><dt>raised for athletes</dt><dd>$1M+</dd></div>
           <div><dt>fan investments</dt><dd>1,000+</dd></div>
           <div><dt>offerings fully funded</dt><dd>9</dd></div>
         </dl>
-        <p class="hero-legal micro">Investing is speculative and you can lose your entire investment.<span class="long"> Offered under Regulation CF through DealMaker Securities LLC, a registered broker-dealer and member of FINRA and SIPC.</span></p>
+        <p class="hero-legal micro">Investing is speculative and you can lose your entire investment.<span class="long"> Regulation CF offerings through DealMaker Securities LLC, member FINRA/SIPC.</span></p>
       </div>
 
       <figure class="feature" aria-labelledby="feature-name">
@@ -190,6 +191,7 @@
         <p class="lead">Move the sliders. The first sets what you invest. The second sets what the athlete earns in Major League salary over his career, including nothing at all.</p>
       </div>
 
+      <span id="simulator" class="sim-anchor"></span>
       <div class="calc" id="calc">
         <div class="calc-controls">
           <div class="field">
@@ -340,7 +342,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2 class="h2"><span class="sent">Nine offerings fully funded.</span> <span class="sent">One&nbsp;Finlete athlete already in the majors.</span></h2>
-        <p class="lead">Finlete investors backed these players early. Here is what they have done since.</p>
+        <p class="lead">Finlete investors backed these players early. Nine offerings are fully funded, and Luinder Avila, whose offering is still open, is already pitching in the majors.</p>
       </div>
 
       <ul class="milestones" role="list">
@@ -370,7 +372,7 @@
         <tbody>
           <tr><th scope="row">Christian Zazueta</th><td>Pitcher, Los Angeles Dodgers</td><td>No. 27 prospect in baseball (Baseball America)</td><td><span class="funded">Sold out</span></td></tr>
           <tr><th scope="row">Carlos Lagrange</th><td>Pitcher, New York Yankees</td><td>Yankees No. 2 prospect, MLB Top 100</td><td><span class="funded">Funded</span></td></tr>
-          <tr><th scope="row">Leonardo Bernal</th><td>Catcher, St. Louis Cardinals</td><td>Cardinals No. 3 prospect, MLB Top 100, Gold Glove (2025)</td><td><span class="funded">Funded</span></td></tr>
+          <tr><th scope="row">Leonardo Bernal</th><td>Catcher, St. Louis Cardinals</td><td>Cardinals No. 3 prospect, MLB Top 100</td><td><span class="funded">Funded</span></td></tr>
           <tr><th scope="row">Jhostynxon Garcia</th><td>Outfield, Pittsburgh Pirates</td><td>Pirates No. 6 prospect, MLB Top 100</td><td><span class="funded">Funded</span></td></tr>
           <tr><th scope="row">Aroon Escobar</th><td>Second base, Philadelphia Phillies</td><td>Phillies No. 6 prospect</td><td><span class="funded">Funded</span></td></tr>
           <tr><th scope="row">Echedry Vargas</th><td>Third base, Miami Marlins</td><td>Marlins No. 14 prospect</td><td><span class="funded">Funded</span></td></tr>
@@ -468,6 +470,7 @@
       </div>
       <div class="actions">
         <a class="btn btn-primary" href="#offerings" data-cta="footer_browse">Browse open offerings</a>
+        <p class="cta-direct"><span>Go straight to:</span> <a href="https://finlete.com/avila" data-cta="footer_avila">Avila</a> <a href="https://finlete.com/mejia" data-cta="footer_mejia">Mejia</a> <a href="https://finlete.com/padilla" data-cta="footer_padilla">Padilla</a> <a href="https://finlete.com/pbundle1" data-cta="footer_bundle">Pitcher Bundle 1</a></p>
         <a href="https://app.finlete.com/" data-cta="footer_account">Not ready? Create a free account and follow the athletes</a>
       </div>
     </div>
@@ -525,8 +528,8 @@
     nav.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    if (open && !was) links.querySelector('a').focus();
-    else if (!open && was && restoreFocus) toggle.focus();
+    if (open && !was) links.querySelector('a').focus({ preventScroll: true });
+    else if (!open && was && restoreFocus) toggle.focus({ preventScroll: true });
   }
   toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('is-open'), true); });
   links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });

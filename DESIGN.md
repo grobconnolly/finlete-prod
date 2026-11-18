@@ -93,7 +93,7 @@ browser text size.
 | `--fs-micro` | 13px / 1.45 | 500 | Legal, chips, table headers. Nothing is smaller. |
 
 Sentence case everywhere. No all-caps labels. Two-sentence headlines break
-between the sentences on desktop (`.sent`).
+between the sentences from 700px up (`.sent`).
 
 ## Spacing, shape, depth
 
@@ -121,9 +121,10 @@ Full width below 520px. Every button says what happens.
 **Hero.** Two columns at desktop, never taller than one viewport under the
 bar and nav, down to 520px of viewport height (three tiers at 760, 620 and
 520px), and capped at 820px so it does not stretch on tall screens. The
-athlete card's photo flexes to make that true. One risk sentence is always
-visible beside the buttons. On phones it stacks: a one-line ranking flag,
-headline, intro, both buttons, proof numbers, athlete card, legal line.
+athlete card's photo flexes to make that true. The risk and regulator line
+is always visible under the proof numbers. On phones it stacks: a one-line
+ranking flag, headline, intro, both buttons, proof numbers, legal line,
+athlete card.
 
 **Featured athlete card.** Game photo, a green rank tile (the ranking is
 the message, so it is the one big-number moment on the page), a status
@@ -191,7 +192,10 @@ scroll. All motion is disabled under `prefers-reduced-motion`.
 - Tap targets are at least 44px tall, including nav links.
 - The primary call to action is above the fold on a 375×667 phone.
 - Multi-column sections stack at 900px; cards go 4, 2, 1.
-- Keyboard focus is never hidden under the sticky nav.
+- Keyboard focus is never hidden under the sticky nav. The offset is a
+  `scroll-margin-top` on content, never `scroll-padding` on the page, which
+  would make the page jump whenever a nav control takes focus.
+- Opening or closing the menu never moves the scroll position.
 - The simulator announces one summary after the reader stops adjusting it.
 
 ## Analytics
