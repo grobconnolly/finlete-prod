@@ -1,154 +1,173 @@
 # Finlete design system
 
-Direction for the 2026 redesign. The prototype that follows it lives in
-`redesign/` (`index.html` + `styles.css`). Pages use the token names below,
-never raw values.
+The system behind the production homepage in `redesign/` (`index.html` +
+`styles.css`). Pages use the token names below, never raw values.
 
 ## The idea
 
 Finlete sits between a brokerage and a ballpark. The most characteristic
 objects in that world are the **back of a baseball card** and the **term
-sheet**: rows of labels and numbers, ruled lines, one typeface, no
-decoration. The site borrows that structure. Information is laid out in
-ruled rows (label left, value right), sections are separated by rules and
-white space rather than by cards and tinted bands, and the only loud thing
-on the page is the headline.
+sheet**: rows of labels and numbers, ruled lines, one typeface. The site
+borrows that structure. Information sits in ruled rows and tables, sections
+are separated by rules and white space, and the page earns trust the way a
+funded company does: real proof, real numbers, real risk language, no
+decoration.
 
-What this replaces: three competing greens, cards for everything, an
-all-caps eyebrow over every heading, one green word in each headline, and
-a hero that talks about investing without showing anything you can invest
-in. The new hero leads with a real live offering.
+The page is built to do three things in order: make the promise, prove it,
+and let the visitor price it for themselves.
+
+1. **Promise.** Invest in top MLB prospects, earn when they make it. The
+   mission is stated in the same breath: capital for the player now.
+2. **Proof.** A sold-out athlete ranked No. 27 in baseball in the hero,
+   $1M+ raised, 1,000+ investments, investors and press, a ledger of nine
+   funded athletes, one already in the majors.
+3. **Price it.** A simulator that shows the payout for any investment and
+   any career outcome, including zero.
+
+## Logo
+
+Use the real lockup only: the angled F mark plus the italic FINLETE
+wordmark, as an inline SVG (path data in `redesign/index.html`, extracted
+from the live site; also in `nextjs/src/components/FinleteLogo.tsx`).
+
+- On light backgrounds the wordmark and upper F are `--navy` (`#1b2a39`),
+  the lower F is `--green-500`.
+- On dark backgrounds the wordmark and upper F are `#fafafa`.
+- 24px tall in the nav, 28px in the footer. Never redraw it, recolor the
+  green, or set the name in a typeface.
 
 ## Color
 
 One green. The verified primary from the live site is `#44a647`. It is a
-surface color: buttons, the progress fill, the slash motif. Text on it is
-black, not white (white fails contrast at 3.1:1; black passes at 6.4:1).
-For green text or links on a white background use the darker `green-700`.
+surface color: buttons, tiles, the slider fill. Text on it is black, not
+white (white fails contrast at 3.1:1; black passes at 6.4:1). Green text
+on white uses `green-700`.
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `--green-500` | `#44a647` | Primary surface: buttons, progress fill, live marker. Black text on it. |
+| `--green-500` | `#44a647` | Primary surface: buttons, rank tile, slider fill, final CTA band. Ink text on it. |
 | `--green-600` | `#3a9240` | Hover for primary surfaces. |
 | `--green-700` | `#2f7d33` | Green text and links on white (5.1:1). |
-| `--green-300` | `#5ad15e` | Green text on the dark section (10.1:1 on ink). |
-| `--green-100` | `#e6f4e6` | Soft green wash for the single illustrative callout. Use once per page at most. |
-| `--ink` | `#0a0a0a` | Text, the dark roster band, footer. |
-| `--ink-2` | `#1a1a1a` | Card surfaces inside the dark band. |
-| `--text` | `#0a0a0a` | Body text on white. |
-| `--text-muted` | `#5c5c5c` | Secondary text on white (6.7:1). Never lighter than `#6b6b6b` for readable text. |
+| `--green-300` | `#5ad15e` | Green text on dark (10.1:1 on ink). Payout figure. |
+| `--green-100` | `#e9f5e9` | Soft wash: the "You get" column, selected scenario row, funded pill. |
+| `--navy` | `#1b2a39` | Logo wordmark only. |
+| `--ink` | `#0a0a0a` | Text, announcement bar, offerings band, simulator result, footer. |
+| `--ink-2` | `#171717` | Card surface inside dark bands. |
+| `--text-muted` | `#5c5c5c` | Secondary text on white (6.7:1). |
 | `--text-on-dark` | `#f4f4f2` | Body text on ink. |
 | `--text-muted-on-dark` | `#a3a3a3` | Secondary text on ink (7.9:1). |
-| `--bg` | `#ffffff` | Page. |
-| `--bg-soft` | `#f5f5f5` | Alternate panel (used for the FAQ and athlete CTA only). |
-| `--rule` | `#e5e5e5` | All rules and borders on white. |
-| `--rule-on-dark` | `#2a2a2a` | Rules on ink. |
-| `--danger` | `#c0392b` | Form errors only. |
+| `--bg` / `--bg-soft` | `#ffffff` / `#f6f6f5` | Page / alternate band (trust, simulator, FAQ). |
+| `--rule` / `--rule-on-dark` | `#e5e5e5` / `#2a2a2a` | All rules and borders. |
 
-No gradients except the one baked into the athlete photography. No
-gradient text. No glow.
+Loss states in the simulator use `#ff9b93` on ink. No gradients, no glow,
+no gradient text.
 
 ## Typography
 
 One family: **Archivo**, loaded as a variable font with its width axis.
-Display text is set expanded (width 115) and heavy; everything else is
-normal width. That gives the two-voice contrast of a display face and a
-text face without a second family. Inter is retired.
-
-Numbers everywhere use `font-variant-numeric: tabular-nums` so that stat
-rows and prices align.
+Display text is set expanded and heavy; everything else is normal width.
+Numbers use `font-variant-numeric: tabular-nums` everywhere.
 
 | Token | Size / line height | Width / weight | Use |
 | --- | --- | --- | --- |
-| `--fs-display` | clamp(44px, 6.2vw, 80px) / 0.98 | wdth 115, 800, tracking -0.025em | Hero headline only. |
-| `--fs-h2` | clamp(32px, 3.6vw, 48px) / 1.05 | wdth 112, 700, tracking -0.02em | Section headlines. |
-| `--fs-h3` | 24px / 1.2 | wdth 105, 600 | Sub-headlines, card names. |
-| `--fs-lead` | 20px / 1.5 | 400 | Hero sub-paragraph. |
-| `--fs-body` | 17px / 1.55 | 400 | Body. Max line length 64ch. |
-| `--fs-small` | 15px / 1.5 | 400–500 | Labels in ruled rows, captions, nav. |
-| `--fs-micro` | 13px / 1.4 | 500 | Legal, timestamps, chip text. |
-| `--fs-stat` | 32px / 1 | wdth 108, 700 | Numbers in the proof row and term sheets. |
+| `--fs-display` | clamp(36px, min(4.4vw, 7.6vh), 60px) / 1 | wdth 115, 800 | Hero headline, final CTA. Scales with viewport height so the hero always fits one screen. |
+| `--fs-h2` | clamp(30px, 3.4vw, 46px) / 1.06 | wdth 112, 700 | Section headlines, milestone figures. |
+| `--fs-h3` | 22px / 1.2 | wdth 105, 600 | Card names, sub-headlines. |
+| `--fs-stat` | 30px / 1.1 | wdth 108, 700 | Proof numbers, slider values. |
+| `--fs-lead` | 19px / 1.5 | 400 | Section intros. |
+| `--fs-body` | 17px / 1.55 | 400 | Body. Max 62ch. |
+| `--fs-small` | 15px / 1.5 | 400–600 | Row labels, nav, card meta. |
+| `--fs-micro` | 13px / 1.45 | 500 | Legal, chips, table headers. |
 
 Sentence case everywhere. No all-caps labels, no letter-spaced eyebrows.
 
-## Spacing
+## Spacing, shape, depth
 
-8-point scale: `4, 8, 12, 16, 24, 32, 48, 64, 96, 128`.
-
-- Content width `1200px`, gutter `24px` (16px below 600px).
-- Prose column `640px`.
-- Section padding `96px` top and bottom on desktop, `64px` on mobile.
-- Ruled rows: `16px` vertical padding, `1px` rule below.
-
-## Shape and depth
-
-| Token | Value | Use |
-| --- | --- | --- |
-| `--r-sm` | 4px | Chips, progress track. |
-| `--r-md` | 8px | Buttons, inputs, FAQ items. |
-| `--r-lg` | 16px | Offering cards, photos. |
-| `--shadow-card` | `0 1px 2px rgba(0,0,0,.06), 0 16px 40px -16px rgba(0,0,0,.22)` | The hero offering card only. |
-
-Everything else is flat and separated by rules. Cards are reserved for
-things that are literally cards: athlete offerings.
+- 8-point scale: `4, 8, 12, 16, 24, 32, 48, 64, 96, 128`.
+- Content width `1200px`, gutter `24px` (16px below 600px). Section padding
+  `96px` desktop, `64px` mobile.
+- Radius: `4px` chips, `8px` buttons and inputs, `16px` cards and panels,
+  `999px` pills.
+- One shadow, on the hero athlete card only. Everything else is flat and
+  separated by rules.
 
 ## Components
 
-**Buttons.** 48px tall, 8px radius, 17px/600, 20px horizontal padding.
-- Primary: `green-500` fill, ink text. Hover `green-600`. Focus: 2px ink
-  outline offset 2px.
-- Secondary: transparent, 1px ink border, ink text. Hover: ink fill, white
-  text.
-- Quiet: no border, ink text underlined on hover.
-- Disabled: 40% opacity, no pointer.
-- On the dark band the primary stays green with ink text; the secondary
-  becomes a white border.
+**Announcement bar.** Ink, one line, a green "New" tag, one link. For a
+single live launch only. Shortens to its first sentence on phones.
 
-**Links.** `green-700`, underlined, underline offset 3px. Hover: ink.
+**Navigation.** Sticky, 64px, translucent white with a rule. Logo, five
+anchors, "Sign in" (quiet), "Browse offerings" (primary). Below 960px the
+anchors collapse into a menu that also carries "Sign in".
 
-**Ruled row** (`.row-line`). The signature element. Flex, space-between,
-label in `text-muted`, value in ink with tabular numerals, 1px rule below.
+**Buttons.** 48px min height, 8px radius, 17px/600. Primary: green fill,
+ink text. Secondary: 1px ink border, fills ink on hover. Quiet: text only.
+Full width below 520px. Every button says what happens: "Browse open
+offerings", "View Avila's offering".
 
-**Offering card.** Photo at 4:5, name at `fs-h3`, one line of position and
-club, a ruled row for share price and minimum, a 6px progress track with
-`green-500` fill, raised total and percent beneath, one primary button.
+**Hero.** Two columns at desktop, exactly one viewport tall under the bar
+and nav (`100svh`), at every laptop size down to 1024×768. The athlete
+card's photo flexes to make that true. On phones it stacks: headline,
+intro, both buttons, proof numbers, athlete card, legal line.
 
-**Live marker.** An 8px `green-500` dot before the word "Raising now".
-This is the only status treatment on the page.
+**Featured athlete card.** Action photo, a green rank tile (the ranking is
+the message, so it is the one big-number moment on the page), a status
+chip, name, organization, and a three-stat row.
 
-**Navigation.** Sticky, white, 1px rule below, 64px tall. Logo left, four
-links centre, "Sign in" quiet and "Browse offerings" primary on the right.
-Collapses to logo plus primary button plus a menu toggle below 900px.
+**Trust band.** "Backed by" investor logos and "Featured in" press logos,
+rendered dark at fixed heights (38px / 20px) on `bg-soft`.
 
-**FAQ.** Native `<details>` with a 1px rule between items and a plus sign
-that rotates to a cross when open.
+**Exchange.** Two columns, "The athlete gets" and "You get", as ruled
+lists. The second column carries the green wash.
 
-**Footer.** Ink background, three link columns, and the Regulation CF
-broker-dealer disclaimer in `fs-micro` at full width. The disclaimer is
-not optional.
+**Returns simulator.** Two range inputs (investment $300 to $10,000;
+career MLB earnings $0 to $1B on a stepped scale so realistic values are
+reachable), a five-outcome table that always includes "Never reaches MLB",
+and an ink result panel: payout, a plain-language verdict, two comparison
+bars, stake, multiple and term. It uses the same model as the simulator on
+the offering pages. Loss and zero outcomes are stated as plainly as gains.
 
-## Imagery and icons
+**Offering card.** Dark band only. Photo at 4:5 (16:11 on phones), status
+badge, name, position and club, one factual highlight, share price and
+minimum as ruled rows, one button.
 
-- Athlete photography is the existing black-and-white cut-out set with the
-  green slash (`assets/img/athletes/hero-stage-*.png`). It is the only
-  place the green appears as texture. Do not add stock photos or
-  illustrations.
-- Press logos render in grayscale at a fixed 24px height.
-- Icons: none in the layout except the plus/cross on FAQ items and the
-  menu toggle, both inline SVG, 1.5px stroke, currentColor.
+**Ledger.** A real table for funded athletes: athlete, organization,
+notable, offering status. Collapses to stacked rows below 760px.
+
+**FAQ.** Native `<details>`, risk questions first.
+
+**Footer.** Ink. Logo, three link columns, then the full regulatory text
+verbatim from the offering pages. It is not optional and is never set
+lighter than `text-muted-on-dark`.
+
+## Imagery
+
+- Hero: real game photography of the featured athlete.
+- Offering cards: the black-and-white Finlete cut-out portraits with the
+  green slash (`assets/img/athletes/hero-stage-*.png`).
+- No stock photos, no illustrations, no icons beyond the menu toggle, FAQ
+  plus sign and social marks.
 
 ## Motion
 
-One moment: the progress bars fill to their value on first paint over
-600ms. Hover states transition at 150ms. Nothing else moves. All motion is
-disabled under `prefers-reduced-motion`.
+Hover states at 150ms and the simulator bars at 200ms. Nothing animates on
+scroll. All motion is disabled under `prefers-reduced-motion`.
 
 ## Writing
 
-- Say what happens: "Browse live offerings", "Invest in Luinder Avila",
-  not "Get started" or "Learn more".
-- Name the mechanism plainly and the same way every time: shares in an
-  athlete's future earnings. Not "equity", not "a loan".
-- Every number that is illustrative says so next to the number.
-- Risk and regulatory language is written in the same voice and size as
-  the rest of the page, never hidden in a lighter grey.
+- Name the mechanism the same way every time: a share of the athlete's
+  Major League earnings. Not "equity in a player", not "a loan".
+- Payouts are annual, from pre-tax, on-field MLB income, for 25 years.
+- Every simulated number is labelled simulated. Every ranking names its
+  source.
+- Risk is written in the same voice and size as the benefits.
+- Facts about athletes come from their live Finlete profile. Do not
+  restate a ranking or statistic that is not published there or supplied
+  by the team.
+
+## Responsive rules
+
+- No horizontal scroll from 360px up.
+- Tap targets are at least 44px tall.
+- The primary call to action is above the fold on a 375×667 phone.
+- Multi-column sections stack at 900px; cards go 4, 2, 1.
