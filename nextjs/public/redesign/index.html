@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="only light">
   <title>Finlete | Invest in an athlete’s career</title>
   <meta name="description" content="Back MLB prospects early. You get a % of an athlete’s future MLB earnings. If he never makes it, you get nothing.">
   <link rel="canonical" href="https://finlete.com/">
@@ -162,7 +163,7 @@
             <span class="cap">one investment</span>
           </div>
           <div class="card-body">
-            <h3 class="h3">Pitcher Bundle 1</h3>
+            <h3 class="h3">Pitcher Bundle&nbsp;1</h3>
             <p class="card-meta">Six athletes<br>in a single offering</p>
             <p class="card-note">Includes Luinder Avila, recovering from Tommy John surgery.</p>
             <dl class="card-terms">
@@ -257,13 +258,13 @@
             </span>
             <span class="spot-id">
               <span class="spot-name">Christian Zazueta</span>
-              <span class="spot-meta">Pitcher, Los Angeles Dodgers. Offering sold out.</span>
+              <span class="spot-meta">Pitcher, Los Angeles Dodgers. <span class="nowrap">Offering sold out.</span></span>
             </span>
           </figcaption>
         </figure>
         <ul class="minis" role="list" aria-label="Eight more funded athletes">
-          <li class="mini"><span class="name">Carlos Lagrange</span><span class="meta">Pitcher, New York Yankees</span><span class="fact">Yankees No. 2 prospect, MLB Top 100</span></li>
-          <li class="mini"><span class="name">Leonardo Bernal</span><span class="meta">Catcher, St. Louis Cardinals</span><span class="fact">Cardinals No. 3 prospect, MLB Top 100</span></li>
+          <li class="mini"><span class="name">Carlos Lagrange</span><span class="meta">Pitcher, New York Yankees</span><span class="fact">Yankees No. 2 prospect, MLB Top&nbsp;100</span></li>
+          <li class="mini"><span class="name">Leonardo Bernal</span><span class="meta">Catcher, St. Louis Cardinals</span><span class="fact">Cardinals No. 3 prospect, MLB Top&nbsp;100</span></li>
           <li class="mini"><span class="name">Jhostynxon Garcia</span><span class="meta">Outfield, Pittsburgh Pirates</span><span class="fact">Pirates No. 6 prospect</span></li>
           <li class="mini"><span class="name">Aroon Escobar</span><span class="meta">Second base, Philadelphia Phillies</span><span class="fact">Phillies No. 6 prospect</span></li>
           <li class="mini"><span class="name">Echedry Vargas</span><span class="meta">Third base, Miami Marlins</span><span class="fact">Marlins No. 14 prospect</span></li>
@@ -371,7 +372,7 @@
     nav.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    if (open && !was) links.querySelector('a').focus({ preventScroll: true });
+    if (open && !was) { links.scrollTop = 0; links.querySelector('a').focus({ preventScroll: true }); }
     else if (!open && was && restoreFocus) toggle.focus({ preventScroll: true });
   }
   toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('is-open'), true); });
@@ -383,8 +384,10 @@
     setOpen(false);
     // the tap that dismisses the menu must not also activate the link under it
     var swallow = function (ev) { ev.preventDefault(); ev.stopPropagation(); };
+    var disarm = function () { document.removeEventListener('click', swallow, true); document.removeEventListener('pointercancel', disarm, true); };
     document.addEventListener('click', swallow, { capture: true, once: true });
-    setTimeout(function () { document.removeEventListener('click', swallow, true); }, 700);
+    document.addEventListener('pointercancel', disarm, true);
+    setTimeout(disarm, 700);
   });
   nav.addEventListener('focusout', function (e) { if (nav.classList.contains('is-open') && e.relatedTarget && !nav.contains(e.relatedTarget)) setOpen(false); });
   if (window.matchMedia) {
