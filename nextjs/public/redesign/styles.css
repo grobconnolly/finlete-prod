@@ -200,23 +200,31 @@ main > section#offerings { scroll-margin-top: calc(var(--nav-h) - 1px - var(--se
 .hero-proof dt { font-size: var(--fs-small); color: var(--text-muted); }
 .hero-legal { color: var(--text-muted); max-width: 62ch; }
 
-/* featured offering: a player card. Details on the left, the whole figure on the right,
-   where the portrait is designed to run off the edge. */
-.feature { position: relative; background: var(--bg); border: 1px solid var(--rule); border-radius: var(--r-lg); box-shadow: var(--shadow-card); overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) 44%; min-height: 380px; }
-.feature-photo { position: relative; background: linear-gradient(var(--portrait-top), var(--portrait-bottom)); overflow: hidden; }
-.feature-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right top; }
+/* featured offering: a player card. The portrait's own background runs across the whole
+   card, so there is no seam: details on the left, the figure on the right, where the
+   portrait is designed to run off the edge.
+   The portrait is 650x1200 with empty space above the cap. It is set to the column's
+   width and stood on the bottom edge. Where the column is too short for that, it moves
+   up by at most 19% of its height, which trims only the empty space, never the cap. */
+.feature { position: relative; background: linear-gradient(var(--portrait-top), var(--portrait-bottom)); border: 1px solid var(--rule-strong); border-radius: var(--r-lg); box-shadow: var(--shadow-card); overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) 44%; min-height: 380px; }
+.feature-photo { position: relative; overflow: hidden; container-type: size; }
+.feature-photo img { position: absolute; left: 0; top: max(100cqh - 184.62cqw, -35cqw); width: 100%; height: auto; max-width: none;
+  /* the photo's own background fades into the card's at its top and left edges */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%), linear-gradient(to bottom, transparent, #000 10%); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 6%), linear-gradient(to bottom, transparent, #000 10%); mask-composite: intersect; }
 .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--ink); font-size: var(--fs-micro); font-weight: 600; padding: 5px 10px 5px 9px; border-radius: 999px; }
 .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green-500); }
 .card-photo .badge { pointer-events: none; position: absolute; top: var(--s-3); left: var(--s-3); z-index: 1; }
-.feature-body { padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-3); }
+.feature-body { padding: var(--s-5); display: flex; flex-direction: column; justify-content: space-between; gap: var(--s-3); }
 .feature-body .badge { align-self: flex-start; border: 1px solid var(--rule-strong); }
 .feature-head { display: grid; gap: 2px; }
+.feature-head .h3 { font-size: 1.625rem; line-height: 1.15; }
 .feature-head .muted { font-size: var(--fs-small); }
-.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3) var(--s-4); border-top: 1px solid var(--rule); padding-top: var(--s-4); margin-top: auto; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3) var(--s-4); border-top: 1px solid var(--rule-strong); padding-top: var(--s-4); }
 .facts > div { display: flex; flex-direction: column; }
 .facts dt { font-size: var(--fs-micro); color: var(--text-muted); }
 .facts dd { font-weight: 700; font-size: 1.25rem; font-stretch: 105%; letter-spacing: -0.01em; line-height: 1.25; }
-.feature-body .btn { margin-top: var(--s-2); }
+.feature-body .btn { margin-top: 0; }
 
 /* large desktops: scale the hero up so it does not look small */
 @media (min-width: 1600px) and (min-height: 940px) {
@@ -277,13 +285,22 @@ main > section#offerings { scroll-margin-top: calc(var(--nav-h) - 1px - var(--se
   .hero-proof > div { padding-right: var(--s-3); margin-right: var(--s-3); justify-content: flex-end; }
   .hero-proof dd { font-size: clamp(1.25rem, 6.2vw, 1.5rem); white-space: nowrap; }
   .hero-proof dt { font-size: var(--fs-micro); line-height: 1.3; }
-  .feature-body { padding: var(--s-4); }
-  .feature-body .btn { font-size: var(--fs-small); padding-inline: 10px; }
+  /* phones: the button runs the full width of the card and the figure stands on it,
+     which leaves the photo a wider column */
+  .feature { grid-template-columns: minmax(0, 1fr) 44%; padding: var(--s-4); gap: var(--s-3) var(--s-2); }
+  .feature-body { display: contents; }
+  .feature-body > * { grid-column: 1; }
+  .feature-body > .badge { grid-row: 1; justify-self: start; }
+  .feature-head { grid-row: 2; }
+  .facts { grid-row: 3; }
+  .feature-body .btn { grid-area: 4 / 1 / 5 / -1; }
+  .feature-photo { grid-column: 2; grid-row: 1 / 4; margin: calc(var(--s-4) * -1) calc(var(--s-4) * -1) 0 0; }
+  .feature-head .h3 { font-size: var(--fs-h3); }
   .facts { gap: var(--s-2) var(--s-3); }
   .facts dd { font-size: var(--fs-body); }
 }
 @media (max-width: 417px) { .hero-proof dt { max-width: 11ch; } }
-@media (max-width: 359px) { :root { --fs-display: 2rem; } .feature { grid-template-columns: minmax(0, 1fr) 36%; } }
+@media (max-width: 359px) { :root { --fs-display: 2rem; } .feature { grid-template-columns: minmax(0, 1fr) 38%; } }
 
 /* ---------- trust band ---------- */
 
