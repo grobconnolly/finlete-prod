@@ -67,8 +67,9 @@ on it is black, not white (white fails contrast at 3.1:1; black passes at
 | `--rule` / `--rule-strong` / `--rule-on-dark` / `--border-on-dark` | `#e5e5e5` / `#d6d6d3` / `#2a2a2a` / `#5a5a5a` | Rules and borders. |
 | `--track-neutral` | `#6b6b6b` | Card border on hover in the dark band. |
 
-One shadow, on the hero card. Two gradients: the scrim under the name on
-the Zazueta photo, and the portrait background continued in the cards.
+One shadow, on the hero card. One gradient: the portrait background
+continued beside the figure in the cards. Nothing is laid over a photo
+except a status badge in clear space.
 
 ## Typography
 
@@ -88,7 +89,7 @@ Tabular figures everywhere. Sizes are in `rem`.
 | `--fs-micro` | 13px / 1.45 | 500 | Legal, badges. Nothing is smaller. |
 
 Sentence case everywhere. Two-sentence headlines break between the
-sentences from 700px up (`.sent`).
+sentences (`.sent`).
 
 ## Spacing and shape
 
@@ -116,12 +117,14 @@ gutter 24px (16px below 600px). Sections 96px desktop, 64px mobile. Radius
 6. **How it works.** One mission sentence and three steps, each with an
    icon tile.
 7. **Funded athletes.** The top-ranked funded athlete as a photo with a
-   green ranking tile, and the rest as small cards. On phones the small
+   caption bar under it holding the green ranking tile and his name, and
+   the rest as small cards. On phones the small
    cards are one swipeable row.
 8. **FAQ.** Four questions, native `<details>`, all closed.
 9. **Closing band.** One line, one button.
 10. **Footer.** Links, one always-visible risk and regulator sentence, and
-    the full regulatory text verbatim inside a "Disclosures" dropdown.
+    the regulatory text from the offering pages inside a "Disclosures"
+    dropdown, without the perks paragraph and with four typos corrected.
 
 ## Imagery and icons
 
@@ -132,7 +135,8 @@ gutter 24px (16px below 600px). Sections 96px desktop, 64px mobile. Radius
   (`--portrait-top` to `--portrait-bottom`). Do not scale a portrait to the
   width of a square or landscape box; that is what makes it look zoomed.
 - Real game photography for the funded spotlight.
-- Three line icons for the steps (1.5px stroke, in a green-100 tile), plus
+- Three line icons for the steps (1.5px stroke, in a green-100 tile). No
+  charts, arrows or anything else that reads as a promise of gains. Plus
   the menu toggle, the plus sign on dropdowns and social marks. No others.
 - Images are WebP at display size and load eagerly, so nothing shows as an
   empty box in a capture or on a fast scroll.
