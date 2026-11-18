@@ -109,6 +109,13 @@ gutter 24px (16px below 600px). Sections 96px desktop, 64px mobile. Radius
    and a button on the left, and the whole portrait on the right. Never
    taller than one viewport on desktop, down to 520px of height. Lead with
    a player whose recent record a fan can look up without being put off.
+   The portrait's gray background covers the whole card, so the photo has
+   no box of its own. The photo is set to its column's width and stands on
+   the bottom edge; in a short column it moves up by at most 35% of its
+   width, which trims only the empty space above the cap. The column is
+   capped (264px on tablets, 200px on phones) so the figure is never
+   scaled into a head crop. On phones the button spans the card and the
+   figure stands on it.
 4. **Trust band.** Investor and press logos.
 5. **Open offerings.** One card per open offering: photo, name, position
    and club, one fact, share price, minimum, one link covering the card.
