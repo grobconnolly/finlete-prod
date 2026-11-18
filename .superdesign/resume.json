@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "/redesign": {
+      "targetKind": "existing-ui",
+      "projectId": "538dbd1f-dcf8-4c8e-b168-164609605fa1",
+      "baselineDraftId": "11ff05d8-67b9-4e27-bf4e-dac88e51f375",
+      "activeDraftId": "11ff05d8-67b9-4e27-bf4e-dac88e51f375",
+      "designSystemPath": ".superdesign/design-system.md",
+      "referenceIds": [
+        "redesign-finlete-logo.svg",
+        "redesign-finlete-logo-on-dark.svg"
+      ],
+      "brandAssets": {
+        "logo": {
+          "assetKey": "redesign-finlete-logo.svg",
+          "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/538dbd1f-dcf8-4c8e-b168-164609605fa1/brand-assets/redesign-finlete-logo.svg/finlete-logo.svg",
+          "sourcePath": "redesign/index.html"
+        },
+        "logoOnDark": {
+          "assetKey": "redesign-finlete-logo-on-dark.svg",
+          "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/538dbd1f-dcf8-4c8e-b168-164609605fa1/brand-assets/redesign-finlete-logo-on-dark.svg/finlete-logo-on-dark.svg",
+          "sourcePath": "redesign/index.html"
+        }
+      },
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        ".superdesign/asset-urls.md",
+        "redesign/index.html",
+        "redesign/styles.css"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "8e63be45251d86a1aa542edbae10a9a7268753a95061f1b7a16fd5736365d559",
+        ".superdesign/asset-urls.md": "14bdcf60a71dcdf46d3a8c429ca86d21b83dcb77068a0ada4571a265a0accaae",
+        "redesign/index.html": "33568a965355bcc18a11a1e97f520bb58c6489bf7ef4e2c0dbb0f49ddc29119c",
+        "redesign/styles.css": "bc8ab78887287030f5dfcf27b138eb1bbedbeea716896f14bb894c79f1b55697"
+      },
+      "components": [],
+      "drafts": {
+        "11ff05d8-67b9-4e27-bf4e-dac88e51f375": {
+          "title": "Current homepage (baseline)",
+          "visualDirection": "faithful reproduction of redesign/index.html as of commit da7fbcf; no design changes",
+          "currentVersion": 1
+        }
+      },
+      "updatedAt": "2026-11-18T20:33:27Z"
+    }
+  }
+}
