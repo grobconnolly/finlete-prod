@@ -11,10 +11,11 @@ export const riskLine =
 export const earningsLine =
   "Any share of future earnings follows the offering terms. It is not guaranteed.";
 
-export const regulatoryLine =
-  "Regulation Crowdfunding offerings, through a FINRA-registered funding portal. [Portal legal name — pending confirmation.]";
+/** Shown as-is. Do not append a portal legal name until it is confirmed. */
+export const regulatoryLine = "Reg CF offerings through a FINRA-registered funding portal.";
 
-export const draperQuotePlaceholder = "[Tim Draper quote — pending approval]";
+// TODO: confirm the funding portal's legal name before adding it anywhere on the page.
+// TODO: Tim Draper quote — pending approval. Do not render a quote block until the words are approved.
 
 export const statsAsOf = "Since Feb 2024, as of Nov 2026.";
 
@@ -65,7 +66,7 @@ export const faqs = [
   },
   {
     q: "Who handles the money?",
-    a: "A FINRA-registered funding portal. [Portal legal name — pending confirmation.] The minimum is $300.",
+    a: "A FINRA-registered funding portal. The minimum is $300.",
   },
 ] as const;
 
@@ -85,13 +86,9 @@ export const investors = [
 ] as const;
 
 export const legalDisclosure =
-  "Offerings are made under Regulation Crowdfunding by Finlete Funding, Inc. Investments are processed through a FINRA-registered funding portal [confirm legal name — do not call it an SEC-registered broker-dealer unless that is verified]. Investing is speculative and illiquid. You could lose your entire investment. Read each offering's Form C before investing.";
+  "Offerings are made under Regulation Crowdfunding by Finlete Funding, Inc. Investments are processed through a FINRA-registered funding portal. Investing is speculative and illiquid. You could lose your entire investment. Read each offering's Form C before investing.";
 
-export const pendingLegalLinks = [
-  "Form C filings",
-  "Offering terms",
-  "Risk factors",
-] as const;
+// TODO: add Form C, offering-terms, and risk-factor URLs when the real links exist. Do not render bracketed placeholders.
 
 export const signInUrl = "https://app.finlete.com";
 

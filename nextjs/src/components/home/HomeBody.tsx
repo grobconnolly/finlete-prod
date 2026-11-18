@@ -3,7 +3,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import {
-  draperQuotePlaceholder,
   earningsLine,
   faqs,
   investors,
@@ -48,8 +47,10 @@ export function PageShell({
 export function TrustBar() {
   return (
     <div className="trust">
+      {/* TODO: Tim Draper quote — pending approval. Do not render until a real quote is approved. */}
+      {/* TODO: funding portal legal name — pending confirmation. */}
       <div className="trust-inner">
-        <div>
+        <div className="trust-block">
           <p className="trust-label">Backed by funds affiliated with Tim Draper</p>
           <div className="logo-row">
             {investors.map((investor) => (
@@ -63,7 +64,7 @@ export function TrustBar() {
             ))}
           </div>
         </div>
-        <div>
+        <div className="trust-block">
           <div className="trust-stats">
             {trustStats.map((stat) => (
               <p key={stat.id}>
@@ -75,7 +76,6 @@ export function TrustBar() {
           <p className="trust-asof">{statsAsOf}</p>
         </div>
         <p className="trust-reg">{regulatoryLine}</p>
-        <p className="quote-pending">{draperQuotePlaceholder}</p>
       </div>
     </div>
   );

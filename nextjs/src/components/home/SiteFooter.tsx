@@ -5,7 +5,6 @@ import {
   footerLegal,
   footerProduct,
   legalDisclosure,
-  pendingLegalLinks,
   socials,
 } from "@/data/home-content";
 import { FacebookIcon, InstagramIcon, XIcon } from "./icons";
@@ -54,12 +53,8 @@ export function SiteFooter() {
           <FooterColumn label="Legal" items={footerLegal} />
         </div>
         <div className="legal-block">
+          {/* TODO: Form C, offering-terms, and risk-factor URLs. */}
           <p>{legalDisclosure}</p>
-          <ul className="pending-links">
-            {pendingLegalLinks.map((label) => (
-              <li key={label}>[{label} — link pending]</li>
-            ))}
-          </ul>
         </div>
         <p className="copyright">© {new Date().getFullYear()} Finlete. All rights reserved.</p>
       </div>

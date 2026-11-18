@@ -305,14 +305,15 @@
 
 .feature-card {
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-columns: 120px minmax(0, 1fr);
   gap: 16px;
-  align-items: center;
-  padding: 12px;
+  align-items: start;
+  padding: 16px;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 16px;
   box-shadow: 0 1px 2px rgba(12, 10, 9, 0.04), 0 16px 36px rgba(12, 10, 9, 0.07);
+  overflow: visible;
 }
 
 .feature-photo,
@@ -387,8 +388,11 @@
   margin-top: 8px;
 }
 
+.hero-grid {
+  margin-bottom: 32px;
+}
+
 .trust {
-  margin-top: 28px;
   background: var(--dark);
   color: #f3f3f3;
 }
@@ -396,23 +400,34 @@
 .trust-inner {
   width: min(var(--max), calc(100% - 40px));
   margin-inline: auto;
-  padding: 24px 0 20px;
-  display: grid;
-  gap: 20px;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.trust-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
 }
 
 .logo-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px 36px;
+  gap: 16px 32px;
 }
 
 .logo-row img {
-  height: 36px;
+  height: 32px;
   width: auto;
-  max-width: 180px;
+  max-width: 168px;
   object-fit: contain;
+  object-position: left center;
 }
 
 .trust-label {
@@ -421,19 +436,24 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #d7d7d7;
-  margin-bottom: 10px;
 }
 
 .trust-stats {
-  display: flex;
-  gap: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 160px));
+  gap: 16px 32px;
+  width: 100%;
+}
+
+.trust-stats p {
+  min-width: 0;
 }
 
 .trust-stats b {
   display: block;
   font-family: var(--font-newsreader), Newsreader, Georgia, serif;
   font-weight: 500;
-  font-size: 28px;
+  font-size: 32px;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
   color: #fff;
@@ -442,27 +462,17 @@
 
 .trust-stats span {
   display: block;
-  margin-top: 6px;
-  font-size: 12px;
+  margin-top: 8px;
+  font-size: 13px;
   color: #d5d5d5;
 }
 
-.trust-reg,
-.quote-pending,
-.trust-asof {
+.trust-asof,
+.trust-reg {
   font-size: 13px;
   line-height: 1.45;
-  color: #e6e6e6;
-}
-
-.trust-asof {
-  margin-top: 10px;
-}
-
-.quote-pending {
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-  font-style: italic;
+  color: #cfcfcf;
+  max-width: 36rem;
 }
 
 .band {
@@ -924,15 +934,8 @@
     max-height: 400px;
   }
 
-  .trust-inner {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr) minmax(0, 1.1fr);
-    align-items: center;
-    column-gap: 32px;
-    padding: 28px 0;
-  }
-
-  .quote-pending {
-    grid-column: 1 / -1;
+  .sticky-cta {
+    display: none;
   }
 
   .band {
@@ -960,6 +963,37 @@
 @media (min-width: 1280px) {
   .home h1 {
     font-size: 56px;
+  }
+}
+
+/* Preview toolbar (Vercel) sits on top of copy. Keep it off unless a variant is forced. */
+html:not([data-qa]) vercel-live-feedback,
+html:not([data-qa]) vercel-toolbar,
+html:not([data-qa]) #vercel-toolbar,
+html:not([data-qa]) [data-vercel-toolbar] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html[data-qa] vercel-live-feedback,
+html[data-qa] vercel-toolbar {
+  position: fixed !important;
+  top: auto !important;
+  left: auto !important;
+  right: 12px !important;
+  bottom: calc(16px + env(safe-area-inset-bottom)) !important;
+  z-index: 45 !important;
+}
+
+@media (max-width: 1023px) {
+  html[data-qa] .sticky-cta {
+    padding-right: 72px;
+  }
+
+  html[data-qa] vercel-live-feedback,
+  html[data-qa] vercel-toolbar {
+    bottom: calc(18px + env(safe-area-inset-bottom)) !important;
   }
 }
 

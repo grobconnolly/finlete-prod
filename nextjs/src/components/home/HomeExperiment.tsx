@@ -15,6 +15,8 @@ export function HomeExperiment() {
 
   useEffect(() => {
     const forced = parseForcedVariant(new URLSearchParams(window.location.search).get("variant"));
+    if (forced) document.documentElement.dataset.qa = "1";
+    else delete document.documentElement.dataset.qa;
     let cancel = false;
     resolveHomepageVariant(forced).then((result) => {
       if (!cancel) setReady(result);
