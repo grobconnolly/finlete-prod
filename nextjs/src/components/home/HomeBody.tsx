@@ -50,21 +50,22 @@ export function TrustBar() {
       {/* TODO: Tim Draper quote — pending approval. Do not render until a real quote is approved. */}
       {/* TODO: funding portal legal name — pending confirmation. */}
       <div className="trust-inner">
-        <div className="trust-block">
-          <p className="trust-label">Backed by funds affiliated with Tim Draper</p>
-          <div className="logo-row">
-            {investors.map((investor) => (
-              <Image
-                key={investor.name}
-                src={investor.src}
-                alt={investor.name}
-                width={investor.width}
-                height={investor.height}
-              />
-            ))}
+        <div className="trust-row">
+          <div className="trust-backers">
+            <p className="trust-label">Backed by funds affiliated with Tim Draper</p>
+            <div className="logo-row">
+              {investors.map((investor) => (
+                <Image
+                  key={investor.name}
+                  src={investor.src}
+                  alt={investor.name}
+                  width={investor.width}
+                  height={investor.height}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="trust-block">
+          <div className="trust-rule" aria-hidden="true" />
           <div className="trust-stats">
             {trustStats.map((stat) => (
               <p key={stat.id}>
@@ -73,9 +74,10 @@ export function TrustBar() {
               </p>
             ))}
           </div>
-          <p className="trust-asof">{statsAsOf}</p>
         </div>
-        <p className="trust-reg">{regulatoryLine}</p>
+        <p className="trust-note">
+          {statsAsOf} {regulatoryLine}
+        </p>
       </div>
     </div>
   );
