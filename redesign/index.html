@@ -22,11 +22,18 @@
   <link rel="preload" href="fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script>
-    // Finlete's existing tags (GTM via Stape, Klaviyo). They load only on finlete.com so previews stay out of the data.
+    // Finlete's existing tags, ported from the live site: Consent Mode defaults and the two defer-gate
+    // events, GTM via Stape, Klaviyo and PixelFlow. They load only on finlete.com so previews stay out of the data.
     window.dataLayer = window.dataLayer || [];
     if (/(^|\.)finlete\.com$/.test(location.hostname)) {
+      window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+      gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted' });
+      function fireNonCritical(){ window.dataLayer.push({ event: 'non_critical_ready' }); }
+      if ('requestIdleCallback' in window) { requestIdleCallback(fireNonCritical, { timeout: 4000 }); } else { setTimeout(fireNonCritical, 4000); }
+      (function(){ var fired = false; function go(){ if (!fired) { fired = true; window.dataLayer.push({ event: 'after_user_interaction' }); } } ['click','scroll','keydown','pointerdown','touchstart'].forEach(function(evt){ window.addEventListener(evt, go, { once: true, passive: true }); }); })();
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://load.stape.finlete.com/4av1bcioycdfn.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','bjses=BwJZJC0iRDctPFAzT1ctRRhbVk1ISQ0NUwANDRUKHQZABQsO');
       (function(d){var k=d.createElement('script');k.async=true;k.src='https://static.klaviyo.com/onsite/js/Whhpe2/klaviyo.js';d.head.appendChild(k);})(document);
+      !(function(p,i,x,f,l,o,w){p["PixelFlowObject"]=f;p[f]=p[f]||function(){(p[f].q=p[f].q||[]).push(arguments);};p[f].l=1*new Date();o=i.createElement(x);w=i.getElementsByTagName(x)[0];o.src=l;o.async=1;p[f].apiKey="c4872453487e9640bee0c94250f36dd12619f2124fa64936f44c5db43d060bf3";p[f].siteId="17803676937084cpmplypqnu";p[f].apiEndpoint="https://api.pixelflow.so/event";w.parentNode.insertBefore(o,w);})(window,document,"script","pixelFlow","https://slrgkgulru.pixelflow.so/pfm.js");
     }
   </script>
 </head>
@@ -50,13 +57,13 @@
       <a href="#offerings">Offerings</a>
       <a href="#how-it-works">How it works</a>
       <a href="#returns">Returns</a>
-      <a href="#track-record">Track record</a>
+      <a href="#track-record">Funded athletes</a>
       <a href="#faqs">FAQs</a>
-      <a class="only-mobile" href="https://app.finlete.com/">Sign in</a>
-      <a class="only-mobile" href="https://app.finlete.com/">Create a free account</a>
+      <a class="only-mobile" href="https://app.finlete.com/" data-cta="menu_signin">Sign in</a>
+      <a class="only-mobile" href="https://app.finlete.com/" data-cta="menu_account">Create a free account</a>
     </nav>
     <div class="nav-actions">
-      <a class="btn btn-quiet" href="https://app.finlete.com/">Sign in</a>
+      <a class="btn btn-quiet" href="https://app.finlete.com/" data-cta="nav_signin">Sign in</a>
       <a class="btn btn-primary" href="#offerings" data-cta="nav_browse">Browse offerings</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
         <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -71,7 +78,7 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <a class="hero-flag" href="#track-record"><b>No. 27 prospect in baseball</b> <span>Christian Zazueta, sold out on Finlete</span></a>
+        <a class="hero-flag" href="#track-record" data-cta="hero_flag"><b>Baseball America No. 27 prospect</b> <span>Christian Zazueta, sold out on Finlete</span></a>
         <h1 class="display"><span class="sent">Invest in top MLB prospects.</span> <span class="sent">Earn as they do.</span></h1>
         <p class="lead">Finlete gives rising players the capital to reach their potential. In return, you own a share of their Major League earnings for 25 years.</p>
         <div class="hero-actions">
@@ -83,7 +90,7 @@
           <div><dt>fan investments</dt><dd>1,000+</dd></div>
           <div><dt>offerings fully funded</dt><dd>9</dd></div>
         </dl>
-        <p class="hero-legal micro">Investing is speculative and you can lose your entire investment.<span class="long"> Regulation CF offerings through DealMaker Securities LLC, member FINRA/SIPC.</span></p>
+        <p class="hero-legal micro">Investing is speculative and you can lose your entire investment. Regulation CF offerings through DealMaker Securities LLC, member FINRA/SIPC.</p>
       </div>
 
       <figure class="feature" aria-labelledby="feature-name">
@@ -133,7 +140,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2 class="h2"><span class="sent">Capital for the player now.</span> <span class="sent">A&nbsp;share of his MLB earnings for you.</span></h2>
-        <p class="lead">Most minor leaguers earn modest salaries with no long-term guarantees. World-class talent shouldn't be held back by money, so Finlete connects prospects with fans who want to back them.</p>
+        <p class="lead">Most minor leaguers earn modest salaries with no long-term guarantees. World-class talent shouldn’t be held back by money, so Finlete connects prospects with fans who want to back them.</p>
       </div>
 
       <div class="exchange">
@@ -141,7 +148,7 @@
           <span class="ex-who">The athlete gets</span>
           <h3 class="h3">Money to train, eat and live like a professional</h3>
           <ul role="list">
-            <li>Upfront capital for training, nutrition, housing and family support</li>
+            <li>Upfront capital for training, nutrition and family support</li>
             <li>No debt. He owes nothing back if he never reaches the majors</li>
             <li>A community of fans invested in his career</li>
           </ul>
@@ -153,16 +160,17 @@
             <li>A percentage of his pre-tax, on-field MLB income for 25 years</li>
             <li>Annual payouts once he is earning at the Major League level</li>
             <li>Perks that grow with your investment: a digital share certificate for every investor, signed memorabilia from $2,500, a virtual meet-and-greet with the player from $10,000</li>
+            <li>Nothing if he never earns in the majors. You can lose your entire investment</li>
           </ul>
         </div>
       </div>
 
-      <figure class="voice">
-        <div>
-          <blockquote><p>“The minor league season is long, there is a lot of travel, and staying healthy takes resources beyond what’s provided. That’s why I’m raising funds on Finlete, to help be the best, healthiest, most focused player I can be.”</p></blockquote>
-          <figcaption>Luinder Avila, pitcher, Kansas City Royals. Written in Triple-A, before his Major League debut.</figcaption>
-        </div>
-      </figure>
+      <div class="voice">
+        <figure>
+            <blockquote><p>“The minor league season is long, there is a lot of travel, and staying healthy takes resources beyond what’s provided. That’s why I’m raising funds on Finlete, to help be the best, healthiest, most focused player I can be.”</p></blockquote>
+            <figcaption>Luinder Avila, pitcher, Kansas City Royals. Written in Triple-A, before his Major League debut.</figcaption>
+        </figure>
+      </div>
 
       <ol class="steps" role="list">
         <li>
@@ -173,7 +181,7 @@
         <li>
           <span class="num">Step 2</span>
           <h3 class="h3">Buy shares from $300</h3>
-          <p>Choose your amount on the athlete's page and check out online. Orders are processed by DealMaker Securities, a registered broker-dealer.</p>
+          <p>Choose your amount on the athlete’s page and check out online. Orders are processed by DealMaker Securities, a registered broker-dealer.</p>
         </li>
         <li>
           <span class="num">Step 3</span>
@@ -188,7 +196,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2 class="h2">See what a stake could be worth</h2>
-        <p class="lead">Move the sliders. The first sets what you invest. The second sets what the athlete earns in Major League salary over his career, including nothing at all.</p>
+        <p class="lead">Move the sliders. The first sets what you invest. The second sets the athlete’s career Major League earnings, including nothing at all.</p>
       </div>
 
       <span id="simulator" class="sim-anchor"></span>
@@ -219,7 +227,7 @@
         </div>
 
         <div class="scenarios">
-          <span class="scn-title" id="scn-title">What <span id="scn-invest">$860</span> would pay in six outcomes<span class="visually-hidden">. Select an outcome to set the earnings slider.</span></span>
+          <span class="scn-title" id="scn-title"><span id="scn-invest">$860</span> in six simulated outcomes<span class="visually-hidden">. Select an outcome to set the earnings slider.</span></span>
           <div class="scn-list" role="group" aria-labelledby="scn-title">
             <button class="scn" type="button" data-earn="0"><span>Never reaches MLB</span><span class="scn-pay">$0</span></button>
             <button class="scn" type="button" data-earn="2000000"><span>$2M career, a short MLB stint</span><span class="scn-pay">$143</span></button>
@@ -241,7 +249,7 @@
           </div>
           <div class="bars" aria-hidden="true">
             <div class="bar"><span>You invest</span><span class="track"><span class="fill" id="bar-invest" style="width:12%"></span></span></div>
-            <div class="bar paid"><span>You're paid</span><span class="track"><span class="fill" id="bar-paid" style="width:100%"></span></span></div>
+            <div class="bar paid"><span>You’re paid</span><span class="track"><span class="fill" id="bar-paid" style="width:100%"></span></span></div>
           </div>
           <dl>
             <div class="row-line"><dt>Your stake in his MLB earnings</dt><dd id="stake-out">0.0072%</dd></div>
@@ -253,7 +261,7 @@
         </div>
       </div>
 
-      <p class="calc-note micro">This simulation uses the same model as the calculator on each Finlete offering page. It is a hypothetical illustration, not a forecast or a promise of returns. Most prospects never sign a large Major League contract, and you can lose your entire investment. Actual stake size depends on the share price and terms of the specific offering. Read the offering's Form C, linked on each athlete's page and in Finlete's <a href="https://www.sec.gov/edgar/browse/?CIK=2010670" rel="noopener">SEC filings</a>, before you invest.</p>
+      <p class="calc-note micro">This simulation uses the same model as the calculator on Finlete’s single-athlete offering pages (Avila, Mejia and Padilla). Pitcher Bundle 1 has different terms and its own calculator on its offering page. It is a hypothetical illustration, not a forecast or a promise of returns. Most prospects never sign a large Major League contract, and you can lose your entire investment. Actual stake size depends on the share price and terms of the specific offering. Read the offering’s Form C, linked on each athlete’s page and in Finlete’s <a href="https://www.sec.gov/edgar/browse/?CIK=2010670" rel="noopener">SEC filings</a>, before you invest.</p>
     </div>
   </section>
 
@@ -261,7 +269,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2 class="h2">Open offerings</h2>
-        <p class="lead">Zazueta's offering sold out. These four are open today, and one of these players has already reached the majors.</p>
+        <p class="lead">Zazueta’s offering sold out. These four are open today, and one of these players has already reached the majors.</p>
       </div>
 
       <div class="cards">
@@ -272,13 +280,13 @@
           </div>
           <div class="card-body">
             <h3 class="h3">Luinder Avila</h3>
-            <p class="card-meta">Pitcher, Kansas City Royals<br>Level: MLB</p>
+            <p class="card-meta">Pitcher, Kansas City Royals<br>In the majors</p>
             <p class="card-note">Made his Major League debut in 2025 and started 12 MLB games in 2026.</p>
             <dl class="card-terms">
               <div class="row-line"><dt>Share price</dt><dd>$1.46</dd></div>
               <div class="row-line"><dt>Minimum</dt><dd>$300.76</dd></div>
             </dl>
-            <a class="card-cta" href="https://finlete.com/avila" data-cta="offer_avila">View Avila's offering</a>
+            <a class="card-cta" href="https://finlete.com/avila" data-cta="offer_avila">View Avila’s offering</a>
           </div>
         </article>
 
@@ -295,7 +303,7 @@
               <div class="row-line"><dt>Share price</dt><dd>$0.76</dd></div>
               <div class="row-line"><dt>Minimum</dt><dd>$300.20</dd></div>
             </dl>
-            <a class="card-cta" href="https://finlete.com/mejia" data-cta="offer_mejia">View Mejia's offering</a>
+            <a class="card-cta" href="https://finlete.com/mejia" data-cta="offer_mejia">View Mejia’s offering</a>
           </div>
         </article>
 
@@ -306,13 +314,13 @@
           </div>
           <div class="card-body">
             <h3 class="h3">Yairo Padilla</h3>
-            <p class="card-meta">Shortstop, St. Louis Cardinals<br>Cardinals No. 16 prospect</p>
+            <p class="card-meta">Shortstop, St. Louis Cardinals<br>Switch-hitter, 24 steals in 2025</p>
             <p class="card-note">Reached base at a .396 clip in 2025 with 90th-percentile exit velocity.</p>
             <dl class="card-terms">
               <div class="row-line"><dt>Share price</dt><dd>$1.08</dd></div>
               <div class="row-line"><dt>Minimum</dt><dd>$300.24</dd></div>
             </dl>
-            <a class="card-cta" href="https://finlete.com/padilla" data-cta="offer_padilla">View Padilla's offering</a>
+            <a class="card-cta" href="https://finlete.com/padilla" data-cta="offer_padilla">View Padilla’s offering</a>
           </div>
         </article>
 
@@ -328,13 +336,14 @@
             <p class="card-note">One investment spreads your risk across every athlete in the bundle.</p>
             <dl class="card-terms">
               <div class="row-line"><dt>Share price</dt><dd>$8.60</dd></div>
-              <div class="row-line"><dt>Athletes</dt><dd>6</dd></div>
+              <div class="row-line"><dt>Minimum</dt><dd>$860.00</dd></div>
             </dl>
-            <a class="card-cta" href="https://finlete.com/pbundle1" data-cta="offer_bundle">See who's in the bundle</a>
+            <a class="card-cta" href="https://finlete.com/pbundle1" data-cta="offer_bundle">See who’s in the bundle</a>
           </div>
         </article>
       </div>
-      <div class="cards-more"><a class="btn btn-secondary" href="https://finlete.com/athletes">See all athletes, open and funded</a></div>
+      <p class="cards-note micro">Investing is speculative and you can lose your entire investment, including in a bundle. Team prospect rankings are as listed on finlete.com/athletes in November 2026 and change over time.</p>
+      <div class="cards-more"><a class="btn btn-secondary" href="https://finlete.com/athletes" data-cta="offer_all_athletes">See all athletes, open and funded</a></div>
     </div>
   </section>
 
@@ -342,7 +351,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2 class="h2"><span class="sent">Nine offerings fully funded.</span> <span class="sent">One&nbsp;Finlete athlete already in the majors.</span></h2>
-        <p class="lead">Finlete investors backed these players early. Nine offerings are fully funded, and Luinder Avila, whose offering is still open, is already pitching in the majors.</p>
+        <p class="lead">Finlete investors backed these players early. Luinder Avila, whose offering is still open, is already pitching in the majors.</p>
       </div>
 
       <ul class="milestones" role="list">
@@ -355,7 +364,7 @@
           <span class="big">MLB</span>
           <span class="who">Luinder Avila</span>
           <p>Made his Major League debut with the Kansas City Royals in 2025 and started 12 MLB games in 2026. His offering is still open.</p>
-          <a href="https://finlete.com/avila" data-cta="milestone_avila">View Avila's offering</a>
+          <a href="https://finlete.com/avila" data-cta="milestone_avila">View Avila’s offering</a>
         </li>
         <li>
           <span class="big">Top 100</span>
@@ -367,10 +376,10 @@
       <table class="ledger">
         <caption>Fully funded athletes</caption>
         <thead>
-          <tr><th scope="col">Athlete</th><th scope="col">Organization</th><th scope="col">Notable</th><th scope="col">Offering</th></tr>
+          <tr><th scope="col">Athlete</th><th scope="col">Position and club</th><th scope="col">Notable</th><th scope="col">Offering</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Christian Zazueta</th><td>Pitcher, Los Angeles Dodgers</td><td>No. 27 prospect in baseball (Baseball America)</td><td><span class="funded">Sold out</span></td></tr>
+          <tr><th scope="row">Christian Zazueta</th><td>Pitcher, Los Angeles Dodgers</td><td>No. 27 prospect in baseball (Baseball America)</td><td><span class="funded">Funded</span></td></tr>
           <tr><th scope="row">Carlos Lagrange</th><td>Pitcher, New York Yankees</td><td>Yankees No. 2 prospect, MLB Top 100</td><td><span class="funded">Funded</span></td></tr>
           <tr><th scope="row">Leonardo Bernal</th><td>Catcher, St. Louis Cardinals</td><td>Cardinals No. 3 prospect, MLB Top 100</td><td><span class="funded">Funded</span></td></tr>
           <tr><th scope="row">Jhostynxon Garcia</th><td>Outfield, Pittsburgh Pirates</td><td>Pirates No. 6 prospect, MLB Top 100</td><td><span class="funded">Funded</span></td></tr>
@@ -381,7 +390,7 @@
           <tr><th scope="row">Winston Santos</th><td>Pitcher, Texas Rangers</td><td>13.5 strikeouts per nine innings (2025)</td><td><span class="funded">Funded</span></td></tr>
         </tbody>
       </table>
-      <p class="ledger-note micro">Christian Zazueta's ranking is from Baseball America. Other rankings and statistics are as listed on each athlete's Finlete profile in November 2026 and change over time. Statistics are through the 2025 season unless noted. A ranking is not a prediction of Major League earnings.</p>
+      <p class="ledger-note micro">Christian Zazueta’s ranking is from Baseball America. Other rankings and statistics are as listed on finlete.com/athletes in November 2026 and change over time. Statistics are through the 2025 season unless noted. A funded offering or a ranking is not a prediction of Major League earnings or of payouts.</p>
       <div class="ledger-cta"><a class="btn btn-secondary" href="#offerings" data-cta="track_browse">See the 4 open offerings</a></div>
     </div>
   </section>
@@ -395,15 +404,15 @@
         </div>
         <ul class="quotes" role="list">
           <li><figure>
-            <blockquote><p>“One of the coolest investments I've ever been a part of. I love baseball and I love stocks and Finlete combines the two.”</p></blockquote>
+            <blockquote><p>“One of the coolest investments I’ve ever been a part of. I love baseball and I love stocks and Finlete combines the two.”</p></blockquote>
             <figcaption>Matt R., investor</figcaption>
           </figure></li>
           <li><figure>
-            <blockquote><p>“Having the option to support exciting prospects has made baseball so much more fun. If they make it I'll feel like I'm on the field with them.”</p></blockquote>
+            <blockquote><p>“Having the option to support exciting prospects has made baseball so much more fun. If they make it I’ll feel like I’m on the field with them!”</p></blockquote>
             <figcaption>Sean B., investor</figcaption>
           </figure></li>
           <li><figure>
-            <blockquote><p>“You feel proud when the athlete succeeds because you've been with them from the beginning.”</p></blockquote>
+            <blockquote><p>“You feel proud when the athlete succeeds because you’ve been with them from the beginning.”</p></blockquote>
             <figcaption>Derek L., investor</figcaption>
           </figure></li>
         </ul>
@@ -416,31 +425,31 @@
       <div class="faq">
         <div class="section-head">
           <h2 class="h2">Questions people ask before investing</h2>
-          <p class="lead">The short answers. Each offering's documents have the long ones.</p>
+          <p class="lead">The short answers. Each offering’s documents have the long ones.</p>
         </div>
         <div>
           <details open>
             <summary>Can I actually make money?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
-            <p>Only if he earns enough in the majors. You receive a fixed percentage of his pre-tax, on-field MLB income for 25 years, so a short or low-paid MLB career can pay back less than you invested. In the simulation above, break-even is roughly $12M of career MLB earnings, and the figure varies by offering. If he never reaches the majors there is nothing to pay out and you lose your entire investment. Treat it as a speculative, long-term position.</p>
+            <p>Only if the athlete earns enough in the majors. You receive a fixed percentage of his pre-tax, on-field MLB income for 25 years, so a short or low-paid MLB career can pay back less than you invested. In the simulation above, break-even is roughly $12M of career MLB earnings, and the figure varies by offering. If he never reaches the majors there is nothing to pay out and you lose your entire investment. Treat it as a speculative, long-term position.</p>
           </details>
           <details>
             <summary>What exactly am I buying?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
-            <p>Shares issued by Finlete Funding, Inc. under Regulation Crowdfunding. Finlete holds a contract for a percentage of the athlete's pre-tax, on-field MLB income and pays it out to shareholders as dividends. Your investment is in those shares, not a direct contract with the athlete. Each offering's Form C describes the exact security.</p>
+            <p>Shares issued by Finlete Funding, Inc. under Regulation Crowdfunding. Finlete holds a contract for a percentage of the athlete’s pre-tax, on-field MLB income and pays it out to shareholders as dividends. Your investment is in those shares, not a direct contract with the athlete. Each offering’s Form C describes the exact security.</p>
           </details>
           <details>
-            <summary>What happens if the athlete doesn't make it?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <summary>What happens if the athlete doesn’t make it?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
             <p>Payouts come only from Major League earnings. If he retires or is released before earning at that level, investors receive no payouts. The athlete does not owe the money back.</p>
           </details>
           <details>
             <summary>How does this help the athlete?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
-            <p>Upfront capital pays for training, nutrition and family support without debt, and he owes nothing back if he never reaches the majors. In Yairo Padilla's words: “The money I receive here will help me focus on baseball and be the best I can be. And if I make it, we will celebrate together.”</p>
+            <p>Upfront capital pays for training, nutrition and family support without debt, and he owes nothing back if he never reaches the majors. In Yairo Padilla’s words: “The money I receive here will help me focus on baseball and be the best I can be. And if I make it, we will celebrate together.”</p>
           </details>
           <details>
             <summary>Can I sell my shares?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
             <p>Shares sold under Regulation Crowdfunding are subject to a one-year lockup. During that period they may only be transferred in limited circumstances, typically to the issuing company, an accredited investor or a family member. After the lockup the shares are still not publicly traded and there is currently no marketplace for them, so expect to hold for the full term. Your return comes from payouts, not from reselling.</p>
           </details>
           <details>
-            <summary>What if an offering doesn't reach its funding target?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <summary>What if an offering doesn’t reach its funding target?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
             <p>If the minimum funding target is not reached, all funds are returned to investors after the close of the offering.</p>
           </details>
           <details>
@@ -456,7 +465,7 @@
     <div class="wrap">
       <div class="copy">
         <h2 class="h2">Are you a player?</h2>
-        <p>Finlete helps you secure upfront funding, build a loyal fan base and stay focused on your sport. No debt, and nothing to repay if you don't reach the majors.</p>
+        <p>Finlete helps you secure upfront funding, build a loyal fan base and stay focused on your sport. No debt, and nothing to repay if you don’t reach the majors.</p>
       </div>
       <div class="actions"><a class="btn btn-secondary" href="https://form.typeform.com/to/xxnLyFV0" data-cta="athlete_apply">Apply to become a Finlete athlete</a></div>
     </div>
@@ -465,7 +474,7 @@
   <section class="cta">
     <div class="wrap">
       <div class="copy">
-        <h2 class="display">Back a player before the call-up.</h2>
+        <h2 class="display">Back a player early.</h2>
         <p>Four offerings are open now. Investments start at $300.</p>
       </div>
       <div class="actions">
@@ -484,7 +493,7 @@
         <a class="brand" href="https://finlete.com/" aria-label="Finlete home">
           <svg viewBox="0 0 128 24" aria-hidden="true" focusable="false"><g transform="scale(1.025 0.994)"><path fill="#fafafa" d="M 6.973 6.037 L 20.915 6.037 L 24.4 0 L 3.486 0 L 0 6.037 L 3.486 12.075 L 6.973 6.037 Z"/></g><g transform="translate(4 9) scale(0.992 0.996)"><path fill="#44a647" d="M 19.151 0 L 15.665 6.037 L 8.694 6.037 L 5.229 12.038 L 5.207 12.075 L 3.487 15.056 L 0 9.019 L 1.722 6.037 L 1.743 6 L 5.207 0 Z"/></g><g transform="translate(31 5) scale(1.007 0.991)" fill="#fafafa"><path d="M 10.693 8.928 L 4.539 8.928 L 3.658 15.132 L 0 15.132 L 2.12 0 L 13.215 0 L 12.786 3.154 L 5.351 3.154 L 4.948 6.078 L 11.101 6.078 L 10.693 8.928 Z"/><path d="M 18.46 15.132 L 14.804 15.132 L 16.922 0 L 20.578 0 Z"/><path d="M 36.567 15.132 L 33.741 15.132 L 27.715 6.305 L 26.479 15.132 L 22.854 15.132 L 24.966 0 L 27.791 0 L 33.844 8.676 L 35.054 0 L 38.685 0 L 36.567 15.132 Z"/><path d="M 40.955 15.132 L 43.073 0 L 46.73 0 L 45.066 11.979 L 51.824 11.979 L 51.371 15.132 L 40.955 15.132 Z"/><path d="M 65.567 8.903 L 59.415 8.903 L 58.986 11.979 L 66.324 11.979 L 65.871 15.132 L 54.875 15.132 L 56.993 0 L 67.989 0 L 67.561 3.154 L 60.222 3.154 L 59.818 6.053 L 65.972 6.053 Z"/><path d="M 70.737 0 L 82.914 0 L 82.459 3.154 L 78.203 3.154 L 76.513 15.132 L 72.855 15.132 L 74.545 3.154 L 70.284 3.154 Z"/><path d="M 94.868 8.903 L 88.718 8.903 L 88.289 11.979 L 95.627 11.979 L 95.174 15.132 L 84.179 15.132 L 86.298 0 L 97.292 0 L 96.863 3.154 L 89.525 3.154 L 89.121 6.053 L 95.274 6.053 Z"/></g></svg>
         </a>
-        <p class="footer-tag">Own a stake in tomorrow's champions.</p>
+        <p class="footer-tag">Own a stake in tomorrow’s champions.</p>
       </div>
       <div>
         <h3>Company</h3>
@@ -550,7 +559,7 @@
   });
 
   // ----- returns simulator -----
-  // Same model as the simulator on Finlete offering pages:
+  // Same model as the simulator on Finlete's single-athlete offering pages (the bundle has its own terms):
   // $860 invested = 0.007164% stake = $7,164 at $100M career MLB earnings.
   var RATE = 7164 / (860 * 100e6);
   var EARN = [0, 1e6, 2e6, 5e6, 8e6, 10e6, 12e6, 15e6, 20e6, 30e6, 40e6, 50e6, 75e6, 100e6, 150e6, 200e6, 300e6, 400e6, 500e6, 750e6, 1e9];
@@ -576,7 +585,7 @@
     invest.setAttribute('aria-valuetext', usd(i));
     $('payout-out').textContent = usd(payout);
     $('stake-out').textContent = (i * RATE * 100).toFixed(4) + '%';
-    $('multiple-out').textContent = (payout / i).toFixed(1) + 'x';
+    $('multiple-out').textContent = (e * RATE).toFixed(1) + 'x';
     $('scn-invest').textContent = usd(i);
     var verdict, state = '';
     if (e === 0) { verdict = 'If he never signs a Major League contract there is no payout, and you lose your ' + usd(i) + '.'; state = 'is-zero'; }

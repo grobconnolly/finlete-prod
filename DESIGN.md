@@ -109,7 +109,7 @@ between the sentences from 700px up (`.sent`).
 single live launch only. Shortens to its first sentence on phones.
 
 **Navigation.** Sticky, 64px, solid white with a rule. Logo left, five
-anchors centred, "Sign in" (quiet) and "Browse offerings" (primary) right.
+anchors centred (Offerings, How it works, Returns, Funded athletes, FAQs), "Sign in" (quiet) and "Browse offerings" (primary) right.
 Below 960px the anchors collapse into a menu that also carries "Sign in"
 and "Create a free account". The menu takes focus when it opens, returns
 focus on Escape, closes on an outside tap, and scrolls on short screens.
@@ -143,7 +143,8 @@ realistic values are reachable), a six-outcome table that always includes
 "Never reaches MLB" and a partial-loss case, and an ink result panel:
 payout, a conditional plain-language verdict, a caveat, two comparison
 bars, stake, multiple and term. It uses the same model as the simulator on
-the offering pages. On phones the result sits directly under the sliders
+the single-athlete offering pages; the bundle has different terms and the
+footnote says so. On phones the result sits directly under the sliders
 so the figure is visible while dragging. A vertical scroll that starts on
 a slider does not change its value.
 
@@ -200,6 +201,9 @@ scroll. All motion is disabled under `prefers-reduced-motion`.
 
 ## Analytics
 
-The page carries Finlete's existing Google Tag Manager and Klaviyo
-loaders, guarded so they run only on `finlete.com`. Every call to action
+The page carries Finlete's existing tags, ported from the live site and
+guarded so they run only on `finlete.com`: the Consent Mode defaults and
+the two defer-gate events (`non_critical_ready`, `after_user_interaction`),
+Google Tag Manager via Stape, Klaviyo and PixelFlow. The live site's UTM
+helpers and `invest_start` listener are not ported. Every call to action
 has a `data-cta` name and pushes a `cta_click` event to the data layer.
