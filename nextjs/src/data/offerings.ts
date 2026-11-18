@@ -31,6 +31,8 @@ export type Offering = {
   percentOfMax: number | null;
   status: "open";
   photo: string | null;
+  /** object-position so each face sits in the same frame. */
+  photoFocus: string;
   checkoutUrl: string;
   checkoutIdConfirmed: boolean;
   /** Always "invest in [name]'s career" (or "these careers" for the bundle). */
@@ -54,6 +56,7 @@ export const offerings: Offering[] = [
     percentOfMax: 39.9,
     status: "open",
     photo: "/brand/athletes/avila.png",
+    photoFocus: "center 18%",
     checkoutUrl: `${CART_HOST}/?id=3994`,
     checkoutIdConfirmed: true,
     cta: "Invest in Luinder's career",
@@ -73,6 +76,7 @@ export const offerings: Offering[] = [
     percentOfMax: null,
     status: "open",
     photo: "/brand/athletes/padilla.png",
+    photoFocus: "center 40%",
     checkoutUrl: CART_HOST,
     checkoutIdConfirmed: false,
     cta: "Invest in Yairo's career",
@@ -92,6 +96,7 @@ export const offerings: Offering[] = [
     percentOfMax: null,
     status: "open",
     photo: "/brand/athletes/mejia.png",
+    photoFocus: "center 32%",
     checkoutUrl: CART_HOST,
     checkoutIdConfirmed: false,
     cta: "Invest in Esteban's career",
@@ -111,6 +116,7 @@ export const offerings: Offering[] = [
     percentOfMax: null,
     status: "open",
     photo: null,
+    photoFocus: "center",
     checkoutUrl: CART_HOST,
     checkoutIdConfirmed: false,
     cta: "Invest in these careers",

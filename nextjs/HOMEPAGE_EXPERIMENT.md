@@ -1,5 +1,13 @@
 # Homepage A/B test
 
+Second pass (same flag, same data file): fewer sections, a serif display face, and a first screen that fits a laptop. Headlines considered:
+
+1. You believe in him early. Invest in the career. — shipped on trust-first
+2. He reached the Royals. Invest in the career from here. — shipped on player-story
+3. Invest in the career before the highlight reel. — not shipped
+
+Do not call the checkout firm an SEC-registered broker-dealer. The page says Regulation Crowdfunding through a FINRA-registered funding portal, with the legal name left as a placeholder.
+
 The Next.js app is the site Vercel deploys (`nextjs/` is the project root, `vercel.json` sets `framework: nextjs`). `/` is that app's homepage. This experiment replaces the captured Framer mirror at `/`. The mirror file is still available at `/index.html`. The older React slice at `/app` is unchanged.
 
 The root Bootstrap site is a separate static clone. It is not what this Vercel project serves, and its athlete pages repeat Luinder Avila's numbers. Do not add offering figures there.

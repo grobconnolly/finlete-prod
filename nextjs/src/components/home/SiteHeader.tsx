@@ -35,7 +35,13 @@ export function SiteHeader() {
         </Link>
         <nav className="desktop-nav" aria-label="Primary">
           {primaryNav.map((item) => (
-            <a key={item.href} href={item.href}>
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => {
+                if (item.href === "#open-offerings") track.cta("header");
+              }}
+            >
               {item.label}
             </a>
           ))}
@@ -43,13 +49,6 @@ export function SiteHeader() {
         <div className="header-actions">
           <a className="sign-in" href={signInUrl}>
             Sign in
-          </a>
-          <a
-            className="btn btn-primary header-cta"
-            href="#open-offerings"
-            onClick={() => track.cta("header")}
-          >
-            See open offerings
           </a>
           <button
             type="button"
