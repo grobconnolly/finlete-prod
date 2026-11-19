@@ -22,6 +22,27 @@ These are legal constraints, not style preferences. Every design must obey them.
 - Risk is stated plainly near the top: "Investing is speculative and you can lose your entire investment." Keep the legal line under the hero and the Disclosures dropdown in the footer.
 - Every ranking names its source; every statistic names its season.
 
+## Agreed homepage structure (founder-approved wireframe, November 2026)
+1. Nav: logo, Athletes, How it works, Sign in, one button.
+2. Hero: Christian Zazueta as proof (No. 24 prospect in baseball, Baseball America; his offering is sold out), one line saying what Finlete is, a button to the open athletes, and a strip of the four open offerings with their share prices.
+3. One proof band: three numbers and the investor and press logos.
+4. Athletes you can invest in: the four open offerings as cards.
+5. Where the money goes: a flow diagram (fans, Finlete, athlete, MLB pay, Finlete, investors) with both endings shown at the same size.
+6. Investment simulator (see the exception below).
+7. For players: capital up front, no debt.
+8. Stay in touch: text-message sign-up and the app download buttons.
+9. FAQ, closing button, footer with the Disclosures dropdown.
+
+## One exception to the hard rules: the investment simulator
+The founder has asked for an investment simulator on the homepage. It is PENDING LEGAL SIGN-OFF and exists in designs only. It is the single place where dollar outcomes may appear, and only in this exact form:
+- Title: 'Investment simulator: it's 2008'. A slider for 'Your investment' from $0 to $5,000, shown at $3,500, at $1.00 a share.
+- Three real prospects from the 2008 Top 100, always shown together, in this order and with these exact figures for a $3,500 investment after Finlete's 10% management fee: Max Scherzer, No. 66 prospect in 2008, career MLB pay $360.1M, 'would have paid $113,447'. Gio Gonzalez, No. 26 prospect in 2008, career MLB pay $65.4M, 'would have paid $20,587'. Chuck Lofgren, No. 71 prospect in 2008, career MLB pay $0, 'you would have lost your $3,500'.
+- The losing case is the same size and weight as the other two. Never show only the winners.
+- Say 'would have paid', never 'return', 'profit', 'earn' or a multiple.
+- Directly under it, at body size: 'These players are not Finlete athletes. This is an illustration using past careers. Past careers do not predict what any prospect will be paid. You can lose your entire investment.'
+- How the figure is worked out, in one line: 'Each share is 1% of his MLB pay divided by 100,000. $3,500 buys 3,500 shares, which is 0.035% of his MLB pay, less a 10% management fee.'
+Everywhere else on the page the hard rules above apply without exception.
+
 ## Brand
 - **Logo:** the real Finlete lockup only (angled F mark + italic FINLETE wordmark). Use the supplied Brand Asset image in every logo position. Never redraw it, never replace it with initials, an emoji, a generic mark or text alone. Navy wordmark on light surfaces, off-white on dark.
 - **Voice:** short, plain, confident. Sentence case everywhere. No hype.
