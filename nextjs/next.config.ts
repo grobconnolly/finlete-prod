@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
 
 /**
- * Pixel-perfect static mirror of finlete.com.
+ * `/` is the React homepage (src/app/page.tsx).
  *
- * Every page is a captured Framer HTML file at its exact URL path inside
- * `public/`:
- *   /                          → public/index.html
+ * The other routes are a pixel-perfect static mirror of finlete.com. Each is a
+ * captured Framer HTML file at its exact URL path inside `public/`:
+ *   /framer                    → public/framer/index.html (the old Framer home)
  *   /about                     → public/about/index.html
  *   /athletes                  → public/athletes/index.html
  *   /avila, /escobar, /ornelas,
@@ -26,6 +26,8 @@ const nextConfig: NextConfig = {
       // Static redesign prototype lives in public/redesign; Next.js only
       // serves public files at their exact path, so map the clean URL.
       { source: "/redesign", destination: "/redesign/index.html" },
+      // The captured Framer homepage, kept for comparison.
+      { source: "/framer", destination: "/framer/index.html" },
     ];
   },
 };

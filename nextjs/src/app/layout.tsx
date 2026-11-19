@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 
+// Variable font with the width axis: the homepage uses font-stretch 105–125%.
 const archivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  axes: ["wdth"],
   display: "swap",
 });
 
