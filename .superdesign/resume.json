@@ -30,7 +30,7 @@
         "redesign/styles.css"
       ],
       "fingerprints": {
-        ".superdesign/design-system.md": "bb4aecd973fe9b4a8c0a686eda4f593620590f099f6b895ce86d739473fba85a",
+        ".superdesign/design-system.md": "b71139c4f86e0b6b9c27b9949627c5ac88ec9b16223af347a982656e7b6e70d3",
         ".superdesign/asset-urls.md": "14bdcf60a71dcdf46d3a8c429ca86d21b83dcb77068a0ada4571a265a0accaae",
         "redesign/index.html": "63acb96b7f9c36407a3762fb4418262fb995f2c7984a90ea56b93d7e21f352ce",
         "redesign/styles.css": "7b415abaabc8779469fe5cbf6d2accef40268f34a39b066a33d3a52e340ee0aa"
@@ -47,9 +47,15 @@
           "visualDirection": "Board B: Zazueta proof hero with open-now chips, one proof band, four offering cards, money-flow diagram, 2008 investment simulator (pending legal sign-off), for-players band, text sign-up and app buttons, FAQ, footer. Same brand system as the baseline.",
           "parentDraftId": "11ff05d8-67b9-4e27-bf4e-dac88e51f375",
           "currentVersion": 3
+        },
+        "8be323ae-dcb0-4617-bc86-c36d21c83a3a": {
+          "title": "Finlete homepage \u2014 Night game",
+          "visualDirection": "Same structure and copy as the approved Board B draft, bolder look: ink-led page, giant green 'No. 24' numeral, Zazueta photo on a diagonal cut, baseball-card athlete cards, scoreboard numbers and simulator, money flow drawn as a baseball diamond with a moving marker. Awaiting the founder's choice between this and the plainer draft.",
+          "parentDraftId": "836839e3-7108-4112-8480-b4db8325f82f",
+          "currentVersion": 2
         }
       },
-      "updatedAt": "2026-11-19T16:10:32Z"
+      "updatedAt": "2026-11-19T16:26:13Z"
     }
   }
 }
