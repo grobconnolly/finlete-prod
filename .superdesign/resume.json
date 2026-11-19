@@ -5,7 +5,7 @@
       "targetKind": "existing-ui",
       "projectId": "538dbd1f-dcf8-4c8e-b168-164609605fa1",
       "baselineDraftId": "11ff05d8-67b9-4e27-bf4e-dac88e51f375",
-      "activeDraftId": "836839e3-7108-4112-8480-b4db8325f82f",
+      "activeDraftId": "85ae246e-6433-468c-b18e-1a7dd5e7ed5d",
       "designSystemPath": ".superdesign/design-system.md",
       "referenceIds": [
         "redesign-finlete-logo.svg",
@@ -56,12 +56,12 @@
         },
         "85ae246e-6433-468c-b18e-1a7dd5e7ed5d": {
           "title": "Finlete homepage \u2014 Night game, refined",
-          "visualDirection": "The design model's own 'best version' pass on the night-game draft: near-identical composition with micro-adjustments. Kept on the canvas for comparison; not active.",
+          "visualDirection": "The design model's own 'best version' pass on the night-game draft: near-identical composition with micro-adjustments. Selected by the founder in Superdesign as the draft to continue. v2 removes the phone mockup from the text-alert panel.",
           "parentDraftId": "8be323ae-dcb0-4617-bc86-c36d21c83a3a",
-          "currentVersion": 1
+          "currentVersion": 2
         }
       },
-      "updatedAt": "2026-11-19T17:17:03Z"
+      "updatedAt": "2026-11-19T17:22:40Z"
     }
   }
 }
