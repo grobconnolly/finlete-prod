@@ -51,6 +51,14 @@ Every design must work on every screen from a 320px phone to a large desktop. Ch
 - The main hero button is on the first screen of a 320x568 phone.
 - Sections use 64px vertical padding and a 16px side gutter at 600px and below.
 
+## Visual direction: night game (founder asked for bolder, less generic, November 2026)
+The first draft followed the tokens so tightly that it looked plain. These extensions are allowed and expected. They use the existing fonts and colors only.
+- **Ink-led page.** Hero, athletes, money flow and simulator sit on ink with off-white text. White and soft-grey bands are the contrast, not the default.
+- **Type as graphics.** Archivo at its widest and heaviest for display (width 125, weight 800 to 900). Rankings and key numbers can be set as very large numerals in green, like a jersey number.
+- **The brand's own marks as motifs.** The athlete portraits carry a diagonal green slash and fine diagonal hatch lines. Use the same angle for photo edges, section accents and corner tabs, and the hatch as a quiet texture behind numbers.
+- **Baseball's own layouts.** Athletes as baseball cards with a nameplate. Numbers and the simulator as a scoreboard or box score in ruled cells with tabular figures. The money flow as a baseball diamond: it leaves home (fans), goes to first (Finlete), second (athlete), third (MLB), and comes home (investors).
+- **Still not allowed.** New typefaces, new colors, gradients other than the portrait background, glows, glass effects, emoji, stock icons, anything that looks like a chart of gains. Risk and legal lines never get smaller or fainter than body text.
+
 ## Brand
 - **Logo:** the real Finlete lockup only (angled F mark + italic FINLETE wordmark). Use the supplied Brand Asset image in every logo position. Never redraw it, never replace it with initials, an emoji, a generic mark or text alone. Navy wordmark on light surfaces, off-white on dark.
 - **Voice:** short, plain, confident. Sentence case everywhere. No hype.
