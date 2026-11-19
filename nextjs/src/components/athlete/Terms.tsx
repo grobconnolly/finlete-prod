@@ -6,7 +6,7 @@ export function Terms({ a }: { a: Athlete }) {
     { num: money(o.sharePrice, true), label: "Share price" },
     { num: money(o.minimumInvestment, true), label: "Minimum investment" },
     { num: formatPct(o.pctOfPay), label: "Of his MLB pay" },
-    { num: `${o.termYears} years`, label: "Payout term" },
+    { num: `${o.termYears} years`, label: "Of MLB contracts covered" },
     { num: o.totalShares.toLocaleString("en-US"), label: "Total shares" },
     { num: money(o.maximumRaise), label: "Maximum raise" },
   ];
@@ -28,6 +28,12 @@ export function Terms({ a }: { a: Athlete }) {
             </div>
           ))}
         </dl>
+        <div className="term-note">
+          <b>What the {o.termYears} years means.</b> The agreement covers every MLB contract he signs
+          during the {o.termYears}-year term. Pay under those contracts counts whenever it is paid:
+          if salary from one of them is deferred past year {o.termYears}, Finlete still collects it.
+          Contracts signed after the term are not covered.
+        </div>
         <p className="terms-docs">
           <a href={o.formC} rel="noopener">
             Form C

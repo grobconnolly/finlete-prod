@@ -16,7 +16,7 @@ export function HowItWorks({ a }: { a: Athlete }) {
     {
       n: "3",
       h: "A % of his MLB pay",
-      p: `If he reaches MLB, Finlete collects its share of his pre-tax, on-field MLB pay during the ${a.offering.termYears}-year term and passes it to shareholders twice a year, less a management fee.`,
+      p: `If he reaches MLB, Finlete collects its % of the pay from every MLB contract he signs during the ${a.offering.termYears}-year term, including pay deferred past the term, and passes it to shareholders twice a year, less a management fee.`,
     },
   ];
   return (

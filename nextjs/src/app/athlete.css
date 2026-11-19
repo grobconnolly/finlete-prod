@@ -172,3 +172,7 @@
 .ah-quote blockquote{padding:var(--s-4) 0}
 }
 @media(max-width:600px){.ah-copy{padding-top:var(--s-5)}.ah-h1 .first{font-size:1.25rem}}
+
+/* term note under the scoreboard */
+.term-note{border-left:4px solid var(--green-500);padding:var(--s-2) 0 var(--s-2) var(--s-4);font-size:var(--fs-body);line-height:1.5;max-width:80ch;color:var(--ink)}
+.term-note b{font-weight:700;font-stretch:105%}

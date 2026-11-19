@@ -25,8 +25,8 @@ export function AthleteHero({ a }: { a: Athlete }) {
               ))}
             </ul>
             <p className="lead">
-              You get a % of his future MLB earnings for {o.termYears} years. If he never makes it,
-              you get nothing.
+              You get a % of the pay from every MLB contract he signs in the next {o.termYears}{" "}
+              years. If he never makes it, you get nothing.
             </p>
 
             <div className="ah-invest" id="invest">

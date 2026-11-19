@@ -104,7 +104,7 @@ export function offeringFaqs(a: Athlete) {
     },
     {
       q: "How long does Finlete receive earnings from the athlete?",
-      a: `For the payout term stated in the Form C. For this offering it is ${a.offering.termYears} years.`,
+      a: `The agreement covers every MLB contract he signs during the ${a.offering.termYears}-year term. Pay under those contracts counts whenever it is paid, so salary deferred past year ${a.offering.termYears} is still collected. Contracts signed after the term are not covered. The Form C states when the term starts.`,
     },
     {
       q: "How much of the athlete's earnings will I get?",

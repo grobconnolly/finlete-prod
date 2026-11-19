@@ -57,7 +57,7 @@ export function PayoutIllustration({ a }: { a: Athlete }) {
               </div>
             </div>
             <div className="sim-slider">
-              <label htmlFor={payId}>His career MLB pay</label>
+              <label htmlFor={payId}>Pay from his MLB contracts in the term</label>
               <span className="amount" aria-live="polite">
                 {payM === 0 ? "$0" : `$${payM}M`}
               </span>
@@ -87,7 +87,7 @@ export function PayoutIllustration({ a }: { a: Athlete }) {
               </>
             ) : (
               <>
-                <span className="res-label">Paid to you over the {o.termYears}-year term, before tax</span>
+                <span className="res-label">Paid to you from the MLB contracts he signs in the {o.termYears}-year term, before tax</span>
                 <span className="res-num">{money(paid)}</span>
               </>
             )}
