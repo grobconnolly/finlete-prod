@@ -43,6 +43,14 @@ The founder has asked for an investment simulator on the homepage. It is PENDING
 - How the figure is worked out, in one line: 'Each share is 1% of his MLB pay divided by 100,000. $3,500 buys 3,500 shares, which is 0.035% of his MLB pay, less a 10% management fee.'
 Everywhere else on the page the hard rules above apply without exception.
 
+## Responsive is mandatory
+Every design must work on every screen from a 320px phone to a large desktop. Check each draft before it is shown:
+- No sideways scrolling at any width from 320px up. Anything wider than the screen (a row of chips, a row of cards) scrolls inside its own container.
+- Phones first: the nav collapses to the logo and one button; multi-column sections stack to one column; offering cards go horizontal (photo on the left) at 560px and below so four fit in about two screens.
+- Tap targets at least 44px tall. Text at least 13px. No clipped or overlapping text.
+- The main hero button is on the first screen of a 320x568 phone.
+- Sections use 64px vertical padding and a 16px side gutter at 600px and below.
+
 ## Brand
 - **Logo:** the real Finlete lockup only (angled F mark + italic FINLETE wordmark). Use the supplied Brand Asset image in every logo position. Never redraw it, never replace it with initials, an emoji, a generic mark or text alone. Navy wordmark on light surfaces, off-white on dark.
 - **Voice:** short, plain, confident. Sentence case everywhere. No hype.
