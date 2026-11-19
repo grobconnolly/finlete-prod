@@ -48,8 +48,10 @@ export type Athlete = {
     weight: string;
     orgRank: string;
     top100: string;
+    acquired?: string;
+    eta?: string;
   };
-  stats: { kind: "hitting" | "pitching"; columns: string[]; rows: StatRow[] };
+  stats: { kind: "hitting" | "pitching"; columns: string[]; rows: StatRow[]; source: string };
   statement: string[];
   photos: {
     cutout: { src: string; width: number; height: number };
@@ -156,10 +158,10 @@ export const ATHLETES: Athlete[] = [
     organization: "St. Louis Cardinals",
     position: "Shortstop",
     positionAbbr: "SS",
-    level: "Rookie",
-    team: "FCL Cardinals",
-    // The live page shows three different organization ranks (8, 12, 16). 8 is the one in its headline tags.
-    highlights: [".396 OBP in 2025", "24 SB in 120 AB in 2025", "Switch-hitter", "Cardinals No. 8 prospect"],
+    level: "High-A",
+    team: "Peoria Chiefs",
+    // FanGraphs, 2026 updated report: org rank 8, ETA 2029, FV 45+. Promoted to High-A on 19 August 2026.
+    highlights: ["Cardinals No. 8 prospect", "Promoted to High-A in August 2026", ".828 OPS at Single-A in 2026", "Switch-hitting shortstop"],
     quote: {
       text: "If it goes good, this is like Fernando Tatis Jr. If this goes good, this is Elly De La Cruz.",
       who: "Geoff Pontes",
@@ -186,16 +188,22 @@ export const ATHLETES: Athlete[] = [
       throws: "Right",
       height: "6'0\"",
       weight: "170 lb",
-      orgRank: "No. 8",
+      orgRank: "No. 8 (FanGraphs, 2026)",
       top100: "Not ranked",
+      acquired: "Amateur free agent (Dominican Republic), January 2024",
+      eta: "2029 (FanGraphs)",
     },
     stats: {
       kind: "hitting",
       columns: ["AB", "H", "HR", "RBI", "SB", "AVG", "OPS"],
+      // FanGraphs minor-league totals. 2026 combines the complex league, Single-A Palm Beach and High-A Peoria.
       rows: [
-        { label: "2025", values: ["120", "34", "0", "10", "24", ".283", ".763"] },
-        { label: "Career", values: ["256", "73", "1", "27", "46", ".285", ".780"] },
+        { label: "2024 (DSL)", values: ["136", "39", "1", "17", "22", ".287", ".796"] },
+        { label: "2025 (Complex)", values: ["120", "34", "0", "10", "24", ".283", ".763"] },
+        { label: "2026 (A / A+)", values: ["138", "38", "5", "28", "10", ".275", ".844"] },
+        { label: "Career", values: ["394", "111", "6", "55", "56", ".282", ".803"] },
       ],
+      source: "FanGraphs, 19 November 2026",
     },
     statement: [
       "Some kids grow up with posters on their wall. I grew up with a glove in my hand.",
@@ -307,6 +315,7 @@ export const ATHLETES: Athlete[] = [
         { label: "2025", values: ["1", "4", "2.94", "14", "52.0", "67", "1.29"] },
         { label: "Career", values: ["1", "9", "3.72", "29", "94.1", "131", "1.37"] },
       ],
+      source: "finlete.com, November 2026",
     },
     statement: [
       "I grew up in the Dominican Republic where baseball is everything. From the time I was a kid I knew this was my path, and I gave everything to make it happen.",
@@ -418,6 +427,7 @@ export const ATHLETES: Athlete[] = [
         { label: "2025 (MLB)", values: ["1", "0", "1.29", "5", "7.0", "8", null] },
         { label: "Career", values: ["23", "35", "4.54", "120", "477.1", "448", "1.32"] },
       ],
+      source: "finlete.com, November 2026",
     },
     statement: [
       "Ever since I was a kid in Venezuela, baseball has been my world. I spent countless hours on fields in my hometown dreaming about one day playing in the United States. I signed with the Kansas City Royals and took my first real step toward that dream.",

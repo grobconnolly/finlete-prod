@@ -15,6 +15,8 @@ export function Bio({ a }: { a: Athlete }) {
     ["Current level", a.level],
     ["Current team", a.team],
   ];
+  if (b.acquired) facts.push(["How acquired", b.acquired]);
+  if (b.eta) facts.push(["Projected MLB arrival", b.eta]);
   return (
     <section className="section bio slash-top" id="athlete">
       <div className="wrap">
@@ -72,8 +74,8 @@ export function Bio({ a }: { a: Athlete }) {
             </table>
           </div>
           <p className="note micro">
-            Statistics and rankings as shown on finlete.com, November 2026. They do not predict
-            MLB earnings.
+            Statistics and rankings from {a.stats.source}. A projected arrival is a scouting
+            estimate, not a promise. None of this predicts MLB earnings.
           </p>
         </div>
       </div>

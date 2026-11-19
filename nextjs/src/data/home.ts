@@ -46,7 +46,7 @@ export const OFFERINGS: Offering[] = [
     href: "/padilla",
     tab: "Open",
     meta: ["Shortstop, St. Louis Cardinals", "Switch-hitter"],
-    note: ".396 on-base percentage in 2025.",
+    note: "Promoted to High-A in August 2026, at 19.",
     sharePrice: "$1.08",
     minimum: "$300.24",
     cta: "View Padilla's offering",
