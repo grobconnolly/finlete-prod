@@ -6,10 +6,13 @@ import type { NextConfig } from "next";
  * The other routes are a pixel-perfect static mirror of finlete.com. Each is a
  * captured Framer HTML file at its exact URL path inside `public/`:
  *   /framer                    → public/framer/index.html (the old Framer home)
+ *   /framer/padilla, /framer/avila
+ *                              → public/framer/<slug>/index.html (old offering pages;
+ *                                /padilla and /avila are now React, src/app/[slug])
  *   /about                     → public/about/index.html
  *   /athletes                  → public/athletes/index.html
- *   /avila, /escobar, /ornelas,
- *   /padilla, /santos, /teodo  → public/<slug>/index.html
+ *   /escobar, /ornelas,
+ *   /santos, /teodo            → public/<slug>/index.html
  *   /athlete-landingpage-2026  → public/athlete-landingpage-2026/index.html
  *   /legal/terms-of-service    → public/legal/terms-of-service/index.html
  *   /legal/privacy-policy      → public/legal/privacy-policy/index.html
@@ -28,6 +31,7 @@ const nextConfig: NextConfig = {
       { source: "/redesign", destination: "/redesign/index.html" },
       // The captured Framer homepage, kept for comparison.
       { source: "/framer", destination: "/framer/index.html" },
+      { source: "/framer/:slug", destination: "/framer/:slug/index.html" },
     ];
   },
 };

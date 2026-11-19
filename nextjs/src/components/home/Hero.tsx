@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { CHIPS } from "@/data/home";
 
@@ -51,9 +52,9 @@ export function Hero() {
           <span className="chips-label">Open now</span>
           <div className="chips-row">
             {CHIPS.map((c) => (
-              <a className="chip" key={c.id} href={c.href}>
+              <Link className="chip" key={c.id} href={c.href}>
                 {c.label} · <b>{c.price}</b>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

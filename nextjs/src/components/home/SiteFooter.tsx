@@ -1,17 +1,19 @@
+import Link from "next/link";
 import { FinleteLogo } from "@/components/FinleteLogo";
 import { FOOTER_COLUMNS, LINKS } from "@/data/home";
 import { PlusIcon } from "./Faq";
 
-export function SiteFooter() {
+/** `perks`: include the perk rules paragraph (offering pages list perks). */
+export function SiteFooter({ perks = false }: { perks?: boolean }) {
   const year = new Date().getFullYear();
   return (
     <footer className="footer">
       <div className="wrap">
         <div className="footer-grid">
           <div>
-            <a className="brand" href={LINKS.home} aria-label="Finlete home">
+            <Link className="brand" href="/" aria-label="Finlete home">
               <FinleteLogo height={28} />
-            </a>
+            </Link>
           </div>
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.heading}>
@@ -53,6 +55,16 @@ export function SiteFooter() {
                 investors may receive illiquid and/or restricted stock that may be subject to
                 holding period requirements and/or liquidity concerns.
               </p>
+              {perks && (
+                <p>
+                  In order to receive perks from an investment, one must submit a single
+                  investment that meets the minimum perk requirement. Bonus shares from perks will
+                  not be granted if an investor submits multiple investments that, when combined,
+                  meet the perk requirement. Perks are expected to be issued upon the completion
+                  of the Offering. Fractional shares will not be distributed and Bonus Shares will
+                  be determined by rounding down to the nearest whole share.
+                </p>
+              )}
               <p>
                 DealMaker Securities LLC, a registered broker-dealer, and member of FINRA | SIPC,
                 located at 4000 Eagle Point Corporate Drive, Suite 950, Birmingham, AL 35242, is

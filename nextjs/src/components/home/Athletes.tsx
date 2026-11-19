@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { OFFERINGS, type Offering } from "@/data/home";
 
@@ -45,9 +46,9 @@ function Card({ o }: { o: Offering }) {
             <dd>{o.minimum}</dd>
           </div>
         </dl>
-        <a className="card-cta" href={o.href}>
+        <Link className="card-cta" href={o.href}>
           {o.cta}
-        </a>
+        </Link>
       </div>
     </article>
   );

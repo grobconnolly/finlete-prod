@@ -6,7 +6,7 @@
  */
 
 export const LINKS = {
-  home: "https://finlete.com/",
+  home: "/",
   signIn: "https://app.finlete.com/",
   apply: "https://form.typeform.com/to/xxnLyFV0",
   allAthletes: "https://finlete.com/athletes",
@@ -43,7 +43,7 @@ export const OFFERINGS: Offering[] = [
   {
     id: "padilla",
     name: "Yairo Padilla",
-    href: "https://finlete.com/padilla",
+    href: "/padilla",
     tab: "Open",
     meta: ["Shortstop, St. Louis Cardinals", "Switch-hitter"],
     note: ".396 on-base percentage in 2025.",
@@ -67,7 +67,7 @@ export const OFFERINGS: Offering[] = [
   {
     id: "mejia",
     name: "Esteban Mejia",
-    href: "https://finlete.com/mejia",
+    href: "/mejia",
     tab: "Open",
     meta: ["Pitcher, Baltimore Orioles", "Single-A, Orioles No. 6 prospect"],
     note: "Threw 102 mph at 18 years old.",
@@ -79,7 +79,7 @@ export const OFFERINGS: Offering[] = [
   {
     id: "avila",
     name: "Luinder Avila",
-    href: "https://finlete.com/avila",
+    href: "/avila",
     tab: "Open",
     meta: ["Pitcher, Kansas City Royals", "Right-hander"],
     note: "Made his MLB debut in 2025, recovering from Tommy John.",
