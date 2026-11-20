@@ -129,6 +129,10 @@ export function offeringFaqs(a: Athlete) {
         ]
       : []),
     {
+      q: "What fees do I pay?",
+      a: "None at checkout. You pay the share price and nothing on top: Finlete covers the broker-dealer, identity-check and anti-money-laundering costs that investors often pay elsewhere. The one charge is later, on payouts: Finlete keeps a 10% management fee from the MLB pay it collects before passing the rest to shareholders. The Form C states the exact terms.",
+    },
+    {
       q: "Why do athletes do these deals?",
       a: "Two reasons. Capital up front pays for better training, coaching, nutrition and recovery, which improves their odds of reaching the majors. And a committed community of investor-fans deepens the athlete's support network.",
     },

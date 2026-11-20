@@ -65,7 +65,9 @@ export function AthleteHero({ a }: { a: Athlete }) {
                   ) : null}
                 </div>
                 <p className="ah-invest-note">
-                  Checkout runs on DealMaker Securities, the broker-dealer for this offering.
+                  <b>No fees at checkout.</b> The share price is what you pay. Finlete covers the
+                  broker-dealer, identity and anti-money-laundering costs. Checkout runs on DealMaker
+                  Securities, the broker-dealer for this offering.
                 </p>
               </div>
             ) : (
