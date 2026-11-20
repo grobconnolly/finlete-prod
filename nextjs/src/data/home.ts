@@ -62,6 +62,7 @@ export const OFFERINGS: Offering[] = [
     sharePrice: "$8.60",
     minimum: "$860.00",
     cta: "See the bundle",
+    photo: { src: "/img/athletes/bundle-group.webp", width: 552, height: 666 },
     bundle: { big: "6 athletes", cap: "one investment" },
   },
   {

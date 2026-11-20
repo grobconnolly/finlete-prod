@@ -5,14 +5,14 @@ import { OFFERINGS, type Offering } from "@/data/home";
 function Card({ o }: { o: Offering }) {
   return (
     <article className="card">
-      {o.bundle ? (
+      {o.bundle && !o.photo ? (
         <div className="card-photo bundle">
           <span className="corner-tab">{o.tab}</span>
           <span className="big">{o.bundle.big}</span>
           <span className="cap">{o.bundle.cap}</span>
         </div>
       ) : (
-        <div className="card-photo">
+        <div className={`card-photo${o.bundle ? " group" : ""}`}>
           <span className="corner-tab">{o.tab}</span>
           {o.photo && (
             <Image
