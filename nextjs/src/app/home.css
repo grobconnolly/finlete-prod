@@ -282,6 +282,11 @@ details[open]>summary svg{transform:rotate(45deg)}
 .sms-legal{margin-top:var(--s-3);font-size:var(--fs-micro);color:var(--text-muted-on-dark);max-width:60ch;line-height:1.5}
 .sms-alt{margin-top:var(--s-3);font-size:var(--fs-small)}
 .sms-alt a{color:var(--text-on-dark);text-underline-offset:4px}
+.sms-switch{background:none;border:0;padding:0;min-height:44px;font:inherit;color:var(--text-on-dark);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.sms-switch:hover{color:var(--green-500)}
+.sms-done{margin-top:var(--s-2);padding:14px 16px;border:1px solid var(--green-500);border-radius:var(--r-md);color:var(--text-on-dark);font-size:var(--fs-body)}
+.sms-warn{color:#f3b3ab}
+.sms-form input[aria-invalid="true"]{border-color:#f3b3ab}
 .signup-side{display:grid;gap:var(--s-5);justify-items:start}
 .app-box h3{font-size:var(--fs-h3);font-weight:700;font-stretch:110%;margin:0 0 4px;color:var(--text-on-dark)}
 .app-box p{margin:0 0 var(--s-3);font-size:var(--fs-small);color:var(--text-muted-on-dark)}

@@ -11,7 +11,7 @@ export type Athlete = {
   slug: string;
   firstName: string;
   lastName: string;
-  /** Short possessive used in buttons: "Invest in Padilla". */
+  /** Surname used in buttons: "Invest in Padilla's career". */
   shortName: string;
   status: "open" | "funded";
   badge?: "New";
@@ -520,6 +520,12 @@ import { FUNDED, BUNDLES } from "./athletes-funded";
 export const ALL_OFFERINGS: Athlete[] = [...ATHLETES, ...BUNDLES, ...FUNDED];
 export const OPEN_OFFERINGS = ALL_OFFERINGS.filter((a) => a.status === "open");
 export const FUNDED_OFFERINGS = ALL_OFFERINGS.filter((a) => a.status === "funded");
+
+/** "Padilla's career", or "their careers" for a bundle. Compliance: we sell a share of future pay, never the person. */
+export function careerOf(a: Pick<Athlete, "shortName" | "bundle">): string {
+  if (a.bundle) return "their careers";
+  return `${a.shortName}${a.shortName.endsWith("s") ? "’" : "’s"} career`;
+}
 
 export function getAthlete(slug: string) {
   return ALL_OFFERINGS.find((a) => a.slug === slug);

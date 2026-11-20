@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { money, type Athlete } from "@/data/athletes";
+import { money, type Athlete, careerOf } from "@/data/athletes";
 import { LINKS } from "@/data/home";
 
 export function OfferingClose({ a }: { a: Athlete }) {
@@ -10,7 +10,7 @@ export function OfferingClose({ a }: { a: Athlete }) {
       <div className="wrap">
         <div>
           <h2 className="display">
-            {open ? `Invest in ${a.shortName}'s career.` : `${a.lastName} is fully funded.`}
+            {open ? `Invest in ${careerOf(a)}.` : `${a.lastName} is fully funded.`}
           </h2>
           <p className="oc-terms">
             {open && o

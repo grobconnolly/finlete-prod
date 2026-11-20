@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${a.firstName} ${a.lastName} | Finlete`,
     description: a.bundle
       ? `${a.bundle.intro} Shares in a % of six pitchers' future MLB pay under Regulation Crowdfunding. Investing is speculative and you can lose your entire investment.`
-      : `${open ? "Invest in" : "Fully funded:"} ${a.firstName} ${a.lastName}, ${a.position.toLowerCase()} in the ${a.organization} organization. Shares in a % of his future MLB pay under Regulation Crowdfunding. Investing is speculative and you can lose your entire investment.`,
+      : `${open ? `Invest in ${a.firstName} ${a.lastName}’s career.` : `Fully funded: ${a.firstName} ${a.lastName}.`} ${a.position[0].toUpperCase()}${a.position.slice(1).toLowerCase()} in the ${a.organization} organization. Shares in a % of his future MLB pay under Regulation Crowdfunding. Investing is speculative and you can lose your entire investment.`,
   };
 }
 

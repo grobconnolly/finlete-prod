@@ -20,8 +20,8 @@ export const LINKS = {
   instagram: "https://www.instagram.com/finlete/",
   facebook: "https://www.facebook.com/FinletePro/",
   // App badges point at the web app until the store links are supplied.
-  appStore: "https://app.finlete.com/",
-  googlePlay: "https://app.finlete.com/",
+  appStore: "https://apps.apple.com/us/app/finlete/id6783164775",
+  googlePlay: "https://play.google.com/store/apps/details?id=com.finlete.app",
 } as const;
 
 export type Offering = {

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { money, type Athlete } from "@/data/athletes";
+import { money, type Athlete, careerOf } from "@/data/athletes";
 
 /**
  * Sticky invest footer. Hidden while the hero's invest panel (#invest) is on
@@ -64,7 +64,7 @@ export function InvestBar({ a }: { a: Athlete }) {
         </div>
         <p className="si-risk">You can lose your entire investment.</p>
         <a className="btn btn-primary si-btn" href={o.cartUrl} rel="noopener" tabIndex={show ? 0 : -1}>
-          Invest in {a.shortName}
+          Invest in {careerOf(a)}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>

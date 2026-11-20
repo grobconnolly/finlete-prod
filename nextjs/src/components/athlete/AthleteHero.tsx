@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { money, type Athlete } from "@/data/athletes";
+import { money, type Athlete, careerOf } from "@/data/athletes";
 
 export function AthleteHero({ a }: { a: Athlete }) {
   const o = a.offering;
@@ -56,7 +56,7 @@ export function AthleteHero({ a }: { a: Athlete }) {
                 </div>
                 <div className="ah-invest-actions">
                   <a className="btn btn-primary" href={o.cartUrl} rel="noopener">
-                    Invest in {a.shortName}
+                    Invest in {careerOf(a)}
                   </a>
                   {a.videos?.length ? (
                     <a className="btn btn-secondary" href="#videos">

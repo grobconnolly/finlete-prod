@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
-import { formatPct, money, type Athlete } from "@/data/athletes";
+import { formatPct, money, type Athlete, careerOf } from "@/data/athletes";
 
 const FEE = 0.1;
 
@@ -104,7 +104,7 @@ export function PayoutIllustration({ a }: { a: Athlete }) {
                 href={`${o.cartUrl}${o.cartUrl.includes("?") ? "&" : "?"}amount=${amt}`}
                 rel="noopener"
               >
-                Invest {money(amt)} in {a.shortName}
+                Invest {money(amt)} in {careerOf(a)}
               </a>
               <span>Checkout opens with this amount filled in. No fees at checkout.</span>
             </p>
