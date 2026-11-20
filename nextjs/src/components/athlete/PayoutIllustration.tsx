@@ -97,6 +97,18 @@ export function PayoutIllustration({ a }: { a: Athlete }) {
             {money(amt)} buys {shares.toLocaleString("en-US")} shares at {money(o.sharePrice, true)},
             which is {formatPct(frac)} of his MLB pay, less a 10% management fee.
           </p>
+          {o.cartUrl && (
+            <p className="sim-cta">
+              <a
+                className="btn btn-primary"
+                href={`${o.cartUrl}${o.cartUrl.includes("?") ? "&" : "?"}amount=${amt}`}
+                rel="noopener"
+              >
+                Invest {money(amt)} in {a.shortName}
+              </a>
+              <span>Checkout opens with this amount filled in. No fees at checkout.</span>
+            </p>
+          )}
           <p className="sim-disclaimer">
             An illustration, not a forecast. Most minor leaguers never reach MLB and a short MLB
             career can also mean a loss. Payments depend on the terms in the Form C. You can lose

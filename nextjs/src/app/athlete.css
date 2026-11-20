@@ -242,3 +242,8 @@
 @media(max-width:339px){.ocard{grid-template-columns:minmax(0,1fr)}.ocard-photo{max-width:140px}}
 
 .ah-invest-note b{color:var(--text-on-dark);font-weight:700}
+
+/* illustration: carry the chosen amount into checkout */
+.sim-cta{margin:var(--s-5) 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-3) var(--s-4)}
+.sim-cta span{font-size:var(--fs-small);color:var(--text-muted-on-dark)}
+@media(max-width:560px){.sim-cta .btn{width:100%}}
