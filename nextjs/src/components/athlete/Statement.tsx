@@ -16,19 +16,21 @@ export function Statement({ a }: { a: Athlete }) {
             </h2>
           </div>
           <div className="st-body">
-            {a.statement.map((p, i) => (
+            {(a.statement ?? []).map((p, i) => (
               <p key={i} className={i === 0 ? "st-lead" : undefined}>
                 {p}
               </p>
             ))}
             <div className="st-sign">
-              <Image
-                src={a.photos.head.src}
-                width={a.photos.head.width}
-                height={a.photos.head.height}
-                alt=""
-                sizes="56px"
-              />
+              {a.photos.head && (
+                <Image
+                  src={a.photos.head.src}
+                  width={a.photos.head.width}
+                  height={a.photos.head.height}
+                  alt=""
+                  sizes="56px"
+                />
+              )}
               <div>
                 <b>
                   {a.firstName} {a.lastName}

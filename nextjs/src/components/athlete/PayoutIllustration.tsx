@@ -11,7 +11,7 @@ const FEE = 0.1;
  * share of pay = shares × 1% / 100,000, paid = career pay × share × (1 − fee).
  */
 export function PayoutIllustration({ a }: { a: Athlete }) {
-  const o = a.offering;
+  const o = a.offering!;
   const amtId = useId();
   const payId = useId();
   const [amt, setAmt] = useState(1000);

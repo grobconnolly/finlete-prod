@@ -71,6 +71,9 @@ export function Athletes() {
             <Card key={o.id} o={o} />
           ))}
         </div>
+        <p className="all-link">
+          <Link href="/athletes">All athletes and funded deals</Link>
+        </p>
         <p className="note micro">
           Investing is speculative and you can lose your entire investment, including in a
           bundle. Rankings and statistics are from finlete.com/athletes, November 2026, and do

@@ -13,8 +13,14 @@ export type Athlete = {
   lastName: string;
   /** Short possessive used in buttons: "Invest in Padilla". */
   shortName: string;
-  status: "open" | "sold-out";
+  status: "open" | "funded";
   badge?: "New";
+  /** Month the raise closed, for funded offerings. */
+  closed?: string;
+  /** Data that could only be read from an older copy of the page carries its date here. */
+  asOf?: string;
+  /** Set on the bundle offering: the member athletes' slugs and an intro line. */
+  bundle?: { members: string[]; intro: string };
   organization: string;
   /** Position written out, with the abbreviation. */
   position: string;
@@ -24,43 +30,48 @@ export type Athlete = {
   /** Four short facts shown as tags under the name. */
   highlights: string[];
   quote?: { text: string; who: string; outlet: string };
-  offering: {
-    cartUrl: string;
+  offering?: {
+    /** DealMaker checkout. Absent once the offering is closed. */
+    cartUrl?: string;
     sharePrice: number;
-    minimumInvestment: number;
+    minimumInvestment?: number;
     totalShares: number;
     maximumRaise: number;
     minimumRaise: number;
     termYears: number;
-    /** 100,000 shares = 1% of MLB pay (founder's rule). totalShares / 100,000. */
-    pctOfPay: number;
+    /** 100,000 shares = 1% of MLB pay (founder's rule). totalShares / 100,000. Unknown for the bundle. */
+    pctOfPay?: number;
     formC: string;
-    offeringCircular: string;
-    offeringCircularLabel: string;
+    offeringCircular?: string;
+    offeringCircularLabel?: string;
   };
-  bio: {
+  bio?: {
     birthdate: string; // ISO
     birthdateLabel: string;
     birthplace: string;
     bats?: string;
-    throws: string;
-    height: string;
-    weight: string;
+    throws?: string;
+    height?: string;
+    weight?: string;
     orgRank: string;
-    top100: string;
+    top100?: string;
     acquired?: string;
     eta?: string;
   };
-  stats: { kind: "hitting" | "pitching"; columns: string[]; rows: StatRow[]; source: string };
-  statement: string[];
+  stats?: { kind: "hitting" | "pitching"; columns: string[]; rows: StatRow[]; source: string };
+  statement?: string[];
   photos: {
-    cutout: { src: string; width: number; height: number };
+    cutout?: { src: string; width: number; height: number };
     action: { src: string; width: number; height: number; alt: string };
-    head: { src: string; width: number; height: number };
+    head?: { src: string; width: number; height: number };
+    /** "card": a small photo shown as a portrait card instead of the full-bleed hero photo. */
+    heroStyle?: "card";
   };
-  videos: string[]; // YouTube ids, first is the lead
-  spotlight: { text: string; author: string; handle: string; date: string; url: string }[];
+  videos?: string[]; // YouTube ids, first is the lead
+  spotlight?: { text: string; author: string; handle: string; date: string; url: string }[];
 };
+
+export type Post = NonNullable<Athlete["spotlight"]>[number];
 
 export const PERKS = [
   {
@@ -90,8 +101,9 @@ export const PERK_RULES =
 
 /** Answers come from finlete.com's FAQ page; two are written from this offering's terms. */
 export function offeringFaqs(a: Athlete) {
-  const pct = formatPct(a.offering.pctOfPay);
-  return [
+  const o = a.offering;
+  const term = o?.termYears ?? 25;
+  const faqs = [
     {
       q: "What types of securities are being sold?",
       a: "Athlete-specific preferred stock, a class of preferred stock issued by Finlete Funding, Inc. or an athlete-specific subsidiary. The offering circular describes the exact security on sale.",
@@ -106,12 +118,16 @@ export function offeringFaqs(a: Athlete) {
     },
     {
       q: "How long does Finlete receive earnings from the athlete?",
-      a: `The agreement covers every MLB contract he signs during the ${a.offering.termYears}-year term. Pay under those contracts counts whenever it is paid, so salary deferred past year ${a.offering.termYears} is still collected. Contracts signed after the term are not covered. The Form C states when the term starts.`,
+      a: `The agreement covers every MLB contract he signs during the ${term}-year term. Pay under those contracts counts whenever it is paid, so salary deferred past year ${term} is still collected. Contracts signed after the term are not covered. The Form C states when the term starts.`,
     },
-    {
-      q: "How much of the athlete's earnings will I get?",
-      a: `This offering covers ${pct} of his pre-tax, on-field MLB pay (${a.offering.totalShares.toLocaleString("en-US")} shares, where 100,000 shares equal 1%). Your share is in proportion to the shares you hold, after Finlete's management fee. The Form C states the exact terms.`,
-    },
+    ...(o?.pctOfPay
+      ? [
+          {
+            q: "How much of the athlete's earnings will I get?",
+            a: `This offering covers ${formatPct(o.pctOfPay)} of his pre-tax, on-field MLB pay (${o.totalShares.toLocaleString("en-US")} shares, where 100,000 shares equal 1%). Your share is in proportion to the shares you hold, after Finlete's management fee. The Form C states the exact terms.`,
+          },
+        ]
+      : []),
     {
       q: "Why do athletes do these deals?",
       a: "Two reasons. Capital up front pays for better training, coaching, nutrition and recovery, which improves their odds of reaching the majors. And a committed community of investor-fans deepens the athlete's support network.",
@@ -125,6 +141,7 @@ export function offeringFaqs(a: Athlete) {
       a: "Yes. You can cancel for any reason until 48 hours before a closing. If your funds are already in escrow, they are refunded. To cancel, email info@dealmakersecurities.com.",
     },
   ];
+  return faqs;
 }
 
 export function formatPct(p: number) {
@@ -493,6 +510,13 @@ export const ATHLETES: Athlete[] = [
   },
 ];
 
+import { FUNDED, BUNDLES } from "./athletes-funded";
+
+/** Every offering page: open athletes, bundles, then funded athletes. */
+export const ALL_OFFERINGS: Athlete[] = [...ATHLETES, ...BUNDLES, ...FUNDED];
+export const OPEN_OFFERINGS = ALL_OFFERINGS.filter((a) => a.status === "open");
+export const FUNDED_OFFERINGS = ALL_OFFERINGS.filter((a) => a.status === "funded");
+
 export function getAthlete(slug: string) {
-  return ATHLETES.find((a) => a.slug === slug);
+  return ALL_OFFERINGS.find((a) => a.slug === slug);
 }

@@ -1,7 +1,8 @@
 import type { Athlete } from "@/data/athletes";
 
 export function Spotlight({ a }: { a: Athlete }) {
-  if (!a.spotlight.length) return null;
+  const posts = a.spotlight ?? [];
+  if (!posts.length) return null;
   return (
     <section className="section soft slash-top spotlight" id="spotlight">
       <div className="wrap">
@@ -10,7 +11,7 @@ export function Spotlight({ a }: { a: Athlete }) {
           <p className="lead">What scouts, writers and the club have said. Posts on X, quoted in part.</p>
         </div>
         <ul className="posts" role="list">
-          {a.spotlight.map((t) => (
+          {posts.map((t) => (
             <li className="post" key={t.url}>
               <p>{t.text}</p>
               <footer>

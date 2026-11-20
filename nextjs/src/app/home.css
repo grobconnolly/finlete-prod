@@ -338,3 +338,9 @@ details[open]>summary svg{transform:rotate(45deg)}
 /* skip link and hero photo: next/image sets width/height attributes, the layout sizes it */
 .skip{position:absolute;left:-9999px;top:8px;z-index:30;background:var(--green-500);color:var(--ink);padding:10px 14px;border-radius:var(--r-md);text-decoration:none;font-weight:700}
 .skip:focus{left:8px}
+
+.all-link{margin-top:var(--s-5);font-size:var(--fs-body)}
+.dark .all-link a{color:var(--green-300)}
+.sb-label a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+.sb-label a{display:inline-block;padding:14px 0;margin:-14px 0}

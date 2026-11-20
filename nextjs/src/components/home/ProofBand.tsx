@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { INVESTOR_LOGOS, PRESS_LOGOS, SCOREBOARD, type Logo } from "@/data/home";
 
@@ -28,7 +29,9 @@ export function ProofBand() {
           {SCOREBOARD.map((s) => (
             <div className="sb-cell" key={s.label}>
               <dd className="sb-num">{s.num}</dd>
-              <dt className="sb-label">{s.label}</dt>
+              <dt className="sb-label">
+                {s.href ? <Link href={s.href}>{s.label}</Link> : s.label}
+              </dt>
             </div>
           ))}
         </dl>

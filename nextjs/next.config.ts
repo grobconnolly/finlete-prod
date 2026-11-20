@@ -9,10 +9,10 @@ import type { NextConfig } from "next";
  *   /framer/padilla, /framer/avila
  *                              → public/framer/<slug>/index.html (old offering pages;
  *                                /padilla and /avila are now React, src/app/[slug])
+ *   /framer/athletes, /framer/escobar, /framer/ornelas, /framer/santos,
+ *   /framer/teodo              → public/framer/<slug>/index.html (old pages; the
+ *                                React versions live at /<slug>, src/app/[slug])
  *   /about                     → public/about/index.html
- *   /athletes                  → public/athletes/index.html
- *   /escobar, /ornelas,
- *   /santos, /teodo            → public/<slug>/index.html
  *   /athlete-landingpage-2026  → public/athlete-landingpage-2026/index.html
  *   /legal/terms-of-service    → public/legal/terms-of-service/index.html
  *   /legal/privacy-policy      → public/legal/privacy-policy/index.html

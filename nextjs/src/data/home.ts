@@ -55,7 +55,7 @@ export const OFFERINGS: Offering[] = [
   {
     id: "bundle",
     name: "Pitcher Bundle 1",
-    href: "https://finlete.com/pbundle1",
+    href: "/pbundle1",
     tab: "New",
     meta: ["Six athletes", "in a single offering"],
     note: "Includes Luinder Avila, recovering from Tommy John surgery.",
@@ -98,10 +98,10 @@ export const CHIPS = OFFERINGS.map((o) => ({
   href: o.href,
 }));
 
-export const SCOREBOARD = [
+export const SCOREBOARD: { num: string; label: string; href?: string }[] = [
   { num: "$1M+", label: "Raised for athletes" },
   { num: "1,000+", label: "Fan investments" },
-  { num: "9", label: "Offerings fully funded" },
+  { num: "9", label: "Offerings fully funded", href: "/funded" },
 ];
 
 export type Logo = {
@@ -203,7 +203,8 @@ export const FOOTER_COLUMNS = [
   {
     heading: "Product",
     links: [
-      { label: "All athletes", href: LINKS.allAthletes },
+      { label: "All athletes", href: "/athletes" },
+      { label: "Funded deals", href: "/funded" },
       { label: "How it works", href: "#how-it-works" },
       { label: "Sign in", href: LINKS.signIn },
     ],

@@ -39,17 +39,13 @@ export function InvestBar({ a }: { a: Athlete }) {
   }, []);
 
   const o = a.offering;
+  if (!o?.cartUrl) return null;
+  const head = a.photos.head ?? a.photos.action;
   return (
     <div className={`sticky-invest${show ? " show" : ""}`} aria-hidden={!show}>
       <div className="wrap si-inner">
         <div className="si-who">
-          <Image
-            src={a.photos.head.src}
-            width={a.photos.head.width}
-            height={a.photos.head.height}
-            alt=""
-            sizes="48px"
-          />
+          <Image src={head.src} width={head.width} height={head.height} alt="" sizes="48px" />
           <div className="si-name">
             <b>
               {a.firstName} {a.lastName}
@@ -62,7 +58,8 @@ export function InvestBar({ a }: { a: Athlete }) {
         <div className="si-price">
           <b>{money(o.sharePrice, true)}</b>
           <span>
-            <em className="si-per">per share · </em>min {money(o.minimumInvestment, true)}
+            <em className="si-per">per share</em>
+            {o.minimumInvestment ? ` · min ${money(o.minimumInvestment, true)}` : ""}
           </span>
         </div>
         <p className="si-risk">You can lose your entire investment.</p>

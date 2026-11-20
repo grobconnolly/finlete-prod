@@ -10,7 +10,7 @@ export function Nav() {
           <FinleteLogo height={24} />
         </Link>
         <nav className="nav-links" aria-label="Primary">
-          <Link href="/#athletes">Athletes</Link>
+          <Link href="/athletes">Athletes</Link>
           <Link href="/#how-it-works">How it works</Link>
           <a href={LINKS.signIn}>Sign in</a>
         </nav>
@@ -18,7 +18,7 @@ export function Nav() {
           <a className="nav-signin-m" href={LINKS.signIn}>
             Sign in
           </a>
-          <Link className="btn btn-primary" href="/#athletes">
+          <Link className="btn btn-primary" href="/athletes">
             Browse athletes
           </Link>
         </div>
