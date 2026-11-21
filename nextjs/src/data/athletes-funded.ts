@@ -377,12 +377,13 @@ export const FUNDED: Athlete[] = [
     },
     photos: {
       action: {
-        src: "/img/athletes/bernal-action.webp",
-        width: 1333,
-        height: 918,
-        alt: "Leonardo Bernal batting for Springfield",
+        src: "/img/athletes/bernal-studio.webp",
+        width: 815,
+        height: 1024,
+        alt: "Leonardo Bernal in a Finlete cap and shirt, tossing a baseball",
       },
-      head: { src: "/img/athletes/bernal-head.webp", width: 320, height: 320 },
+      head: { src: "/img/athletes/bernal-head-studio.webp", width: 320, height: 320 },
+      heroStyle: "card",
     },
   },
   {
