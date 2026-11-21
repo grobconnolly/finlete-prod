@@ -41,9 +41,8 @@ export function Simulator() {
             <span className="sim-tag">Illustration</span>
           </div>
           <p className="sim-intro">
-            Imagine it is 2008 and Finlete gave each of these three minor leaguers $100,000 in
-            exchange for 1% of his potential MLB earnings, split into 100,000 shares at $1.00.
-            Pick how much of that you would have put in and see what each career would have paid.
+            Say Finlete gave each of these three minor leaguers $100,000 for 1% of his potential
+            MLB earnings: 100,000 shares at $1. How much would you have put in?
           </p>
 
           <div className="sim-slider">
