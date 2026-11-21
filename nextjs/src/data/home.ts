@@ -58,7 +58,7 @@ export const OFFERINGS: Offering[] = [
     href: "/pbundle1",
     tab: "New",
     meta: ["Six athletes", "in a single offering"],
-    note: "Includes Luinder Avila, recovering from Tommy John surgery.",
+    note: "Includes Christian Zazueta, the No. 23 prospect in baseball.",
     sharePrice: "$8.60",
     minimum: "$860.00",
     cta: "See the bundle",
