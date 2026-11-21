@@ -45,7 +45,12 @@ export function Signup() {
         body: JSON.stringify({ channel, contact }),
       });
       const data = (await res.json().catch(() => ({}))) as { ok?: boolean; configured?: boolean };
-      if (res.ok && data.ok) setStatus("done");
+      if (res.ok && data.ok) {
+        setStatus("done");
+        // For Google Tag Manager. Carries the channel only, never the contact.
+        const w = window as unknown as { dataLayer?: unknown[] };
+        (w.dataLayer = w.dataLayer || []).push({ event: "alerts_signup", channel });
+      }
       else if (data.configured === false) setStatus("unavailable");
       else setStatus("error");
     } catch {

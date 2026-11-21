@@ -4,6 +4,7 @@ import "./globals.css";
 import "@/components/fx/fx.css";
 import { RevealOnScroll } from "@/components/fx/Reveal";
 import { Analytics } from "@/components/site/Analytics";
+import { Attribution } from "@/components/site/Attribution";
 
 // Variable font with the width axis: the homepage uses font-stretch 105–125%.
 const archivo = Archivo({
@@ -56,6 +57,7 @@ export default function RootLayout({
         {children}
         <RevealOnScroll />
         <Analytics />
+        <Attribution />
       </body>
     </html>
   );
