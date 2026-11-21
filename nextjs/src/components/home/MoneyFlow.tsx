@@ -98,20 +98,27 @@ export function MoneyFlow() {
               <h3>If he reaches MLB, the agreement pays</h3>
               <span className="when">during the 25-year term</span>
             </div>
-            <div
-              className="mbar"
-              role="img"
-              aria-label="Of his MLB pay, 99% stays with the athlete and 1% goes to the agreement"
-            >
-              <i />
-              <i />
-            </div>
             <div className="msplit">
-              <div className="mnode src">
-                <b>MLB pay</b>
-                <span>what MLB pays him</span>
-              </div>
+              <ol className="mline msrc">
+                <li className="mnode">
+                  <b>MLB pay</b>
+                  <span>what his club pays him</span>
+                </li>
+                <Arrow />
+                <li className="mnode acct">
+                  <b>Shared bank account</b>
+                  <span>his MLB pay lands here first</span>
+                </li>
+              </ol>
               <div className="mbr">
+                <div
+                  className="mbar"
+                  role="img"
+                  aria-label="The account splits his MLB pay: 99% to the athlete, 1% to Finlete"
+                >
+                  <i />
+                  <i />
+                </div>
                 <ol className="mline">
                   <li className="pct">99%</li>
                   <Arrow />
@@ -124,8 +131,8 @@ export function MoneyFlow() {
                   <li className="pct g">1%</li>
                   <Arrow green />
                   <li className="mnode doc">
-                    <b>Income Share Agreement</b>
-                    <span>Finlete collects the 1%</span>
+                    <b>Finlete</b>
+                    <span>collects the 1% under the Income Share Agreement</span>
                   </li>
                   <Arrow green />
                   <li className="mnode">

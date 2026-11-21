@@ -235,7 +235,11 @@ details[open]>summary svg{transform:rotate(45deg)}
 .mbar i{display:block}
 .mbar i:first-child{flex:99;background:var(--text-on-dark)}
 .mbar i:last-child{flex:1;min-width:4px;background:var(--green-500)}
-.msplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,4fr);gap:var(--s-4);align-items:stretch}
+.msplit{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,3.9fr);gap:var(--s-4);align-items:stretch}
+.msrc .marrow{flex-basis:32px}
+.mnode.acct{border:2px solid var(--text-on-dark)}
+.money.light .mnode.acct{border-color:var(--ink)}
+.mbr .mbar{margin-bottom:0}
 .mnode.src{flex:none}
 .mbr{display:grid;gap:var(--s-3);border-left:2px solid var(--border-on-dark);padding-left:var(--s-4);min-width:0}
 .pct{flex:none;align-self:center;min-width:2.6em;font-weight:900;font-stretch:125%;font-size:1.75rem;letter-spacing:-.03em;line-height:1;color:var(--text-on-dark)}
