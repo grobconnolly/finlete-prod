@@ -14,8 +14,8 @@ import type { NextConfig } from "next";
  *                                React versions live at /<slug>, src/app/[slug])
  *   /about                     → public/about/index.html
  *   /athlete-landingpage-2026  → public/athlete-landingpage-2026/index.html
- *   /legal/terms-of-service    → public/legal/terms-of-service/index.html
- *   /legal/privacy-policy      → public/legal/privacy-policy/index.html
+ *   /legal/terms-of-service, /legal/privacy-policy
+ *                              → React pages (src/app/legal), text in src/data/legal.ts
  *
  * Assets (images, fonts) are served from public/images/ and public/fonts/,
  * referenced by absolute paths from inside each mirrored HTML file.
@@ -38,8 +38,6 @@ const nextConfig: NextConfig = {
       // Pages still served from their captured HTML: Next.js only serves
       // public files at their exact path, so map the clean URLs.
       { source: "/about", destination: "/about/index.html" },
-      { source: "/legal/terms-of-service", destination: "/legal/terms-of-service/index.html" },
-      { source: "/legal/privacy-policy", destination: "/legal/privacy-policy/index.html" },
       { source: "/athlete-landingpage-2026", destination: "/athlete-landingpage-2026/index.html" },
       // Static redesign prototype lives in public/redesign; Next.js only
       // serves public files at their exact path, so map the clean URL.
