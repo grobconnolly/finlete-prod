@@ -26,10 +26,10 @@ export function Simulator() {
     ...p,
     result:
       p.careerPay > 0
-        ? "Would have paid " + money(p.careerPay * frac * (1 - SIM.managementFee))
+        ? "Could have paid " + money(p.careerPay * frac * (1 - SIM.managementFee))
         : shown > 0
           ? "You would have lost your " + money(shown)
-          : "Would have paid $0",
+          : "Could have paid $0",
   }));
 
   return (
@@ -74,7 +74,7 @@ export function Simulator() {
                 <th>Prospect</th>
                 <th>2008 rank</th>
                 <th className="num">Career MLB pay</th>
-                <th className="num">Would have paid</th>
+                <th className="num">Could have paid</th>
               </tr>
             </thead>
             <tbody>
