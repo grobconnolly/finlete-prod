@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/home/SiteFooter";
 import { OfferingGrid } from "@/components/athlete/OfferingGrid";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/funded" },
   title: "Funded deals | Finlete",
   description:
     "The athlete offerings Finlete has already raised and closed. Investing is speculative and you can lose your entire investment.",

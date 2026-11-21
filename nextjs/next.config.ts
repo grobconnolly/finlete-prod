@@ -24,8 +24,23 @@ import type { NextConfig } from "next";
  * than treating this as a static-HTML-only project).
  */
 const nextConfig: NextConfig = {
+  async headers() {
+    // Working copies stay reachable for comparison but out of search results.
+    const noindex = [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
+    return [
+      { source: "/framer/:path*", headers: noindex },
+      { source: "/redesign/:path*", headers: noindex },
+      { source: "/app", headers: noindex },
+    ];
+  },
   async rewrites() {
     return [
+      // Pages still served from their captured HTML: Next.js only serves
+      // public files at their exact path, so map the clean URLs.
+      { source: "/about", destination: "/about/index.html" },
+      { source: "/legal/terms-of-service", destination: "/legal/terms-of-service/index.html" },
+      { source: "/legal/privacy-policy", destination: "/legal/privacy-policy/index.html" },
+      { source: "/athlete-landingpage-2026", destination: "/athlete-landingpage-2026/index.html" },
       // Static redesign prototype lives in public/redesign; Next.js only
       // serves public files at their exact path, so map the clean URL.
       { source: "/redesign", destination: "/redesign/index.html" },

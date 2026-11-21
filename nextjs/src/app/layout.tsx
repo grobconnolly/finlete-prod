@@ -3,6 +3,7 @@ import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 import "@/components/fx/fx.css";
 import { RevealOnScroll } from "@/components/fx/Reveal";
+import { Analytics } from "@/components/site/Analytics";
 
 // Variable font with the width axis: the homepage uses font-stretch 105–125%.
 const archivo = Archivo({
@@ -19,10 +20,26 @@ const inter = Inter({
   display: "swap",
 });
 
+const DESCRIPTION =
+  "Finlete is a marketplace where top athletes sell a % of their potential future earnings. Investing is speculative and you can lose your entire investment.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://finlete.com"),
   title: "Invest in athletes' careers | Finlete",
-  description:
-    "Finlete is a platform where athletes raise capital from fans and investors in exchange for a share of their potential future earnings.",
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Finlete",
+    title: "Invest in athletes' careers | Finlete",
+    description: DESCRIPTION,
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Finlete" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Invest in athletes' careers | Finlete",
+    description: DESCRIPTION,
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
@@ -38,6 +55,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {children}
         <RevealOnScroll />
+        <Analytics />
       </body>
     </html>
   );

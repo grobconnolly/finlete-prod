@@ -13,6 +13,7 @@ import { Closing } from "@/components/home/Closing";
 import { SiteFooter } from "@/components/home/SiteFooter";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/" },
   title: "Invest in athletes' careers | Finlete",
   description:
     "Finlete is where athletes raise capital and investors can invest in athletes' careers. Investing is speculative and you can lose your entire investment.",

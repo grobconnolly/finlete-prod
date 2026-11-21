@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!a) return {};
   const open = a.status === "open";
   return {
+    alternates: { canonical: `/${a.slug}` },
     title: `${a.firstName} ${a.lastName} | Finlete`,
     description: a.bundle
       ? `${a.bundle.intro} Shares in a % of six pitchers' future MLB pay under Regulation Crowdfunding. Investing is speculative and you can lose your entire investment.`
