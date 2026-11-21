@@ -1,4 +1,5 @@
 import { formatPct, money, type Athlete } from "@/data/athletes";
+import { CountUp } from "@/components/fx/CountUp";
 
 export function Terms({ a }: { a: Athlete }) {
   const o = a.offering;
@@ -33,7 +34,9 @@ export function Terms({ a }: { a: Athlete }) {
         <dl className="scoreboard six">
           {cells.map((c) => (
             <div className="sb-cell" key={c.label}>
-              <dd className="sb-num">{c.num}</dd>
+              <dd className="sb-num">
+                <CountUp value={c.num} />
+              </dd>
               <dt className="sb-label">{c.label}</dt>
             </div>
           ))}

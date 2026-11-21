@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { formatPct, money, type Athlete, careerOf } from "@/data/athletes";
+import { rangePct, useAnimatedNumber } from "@/components/fx/useAnimatedNumber";
 
 const FEE = 0.1;
 
@@ -20,6 +21,9 @@ export function PayoutIllustration({ a }: { a: Athlete }) {
   const shares = Math.floor(amt / o.sharePrice);
   const frac = (shares * 0.01) / 100_000;
   const paid = payM * 1_000_000 * frac * (1 - FEE);
+  // The headline figures roll toward their targets as the sliders move.
+  const shownAmt = useAnimatedNumber(amt);
+  const shownPaid = useAnimatedNumber(paid);
 
   return (
     <section className="section sim-wrap slash-top" id="illustration">
@@ -38,7 +42,7 @@ export function PayoutIllustration({ a }: { a: Athlete }) {
             <div className="sim-slider">
               <label htmlFor={amtId}>Your investment</label>
               <span className="amount" aria-live="polite">
-                {money(amt)}
+                {money(shownAmt)}
               </span>
               <input
                 id={amtId}
@@ -48,6 +52,7 @@ export function PayoutIllustration({ a }: { a: Athlete }) {
                 max={10_000}
                 step={100}
                 value={amt}
+                style={{ "--pct": rangePct(amt, 300, 10_000) } as React.CSSProperties}
                 onChange={(e) => setAmt(Number(e.target.value))}
                 aria-valuetext={money(amt)}
               />
@@ -69,6 +74,7 @@ export function PayoutIllustration({ a }: { a: Athlete }) {
                 max={400}
                 step={5}
                 value={payM}
+                style={{ "--pct": rangePct(payM, 0, 400) } as React.CSSProperties}
                 onChange={(e) => setPayM(Number(e.target.value))}
                 aria-valuetext={`$${payM} million`}
               />
@@ -88,7 +94,7 @@ export function PayoutIllustration({ a }: { a: Athlete }) {
             ) : (
               <>
                 <span className="res-label">Paid to you from the MLB contracts he signs in the {o.termYears}-year term, before tax</span>
-                <span className="res-num">{money(paid)}</span>
+                <span className="res-num count">{money(shownPaid)}</span>
               </>
             )}
           </div>

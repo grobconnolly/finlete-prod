@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { SIM } from "@/data/home";
+import { rangePct, useAnimatedNumber } from "@/components/fx/useAnimatedNumber";
 
 const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
 
@@ -16,7 +17,9 @@ export function Simulator() {
   const [inv, setInv] = useState<number>(SIM.initial);
   const rangeId = useId();
 
-  const shares = inv / SIM.sharePrice;
+  // Figures roll toward the slider value instead of jumping.
+  const shown = useAnimatedNumber(inv);
+  const shares = shown / SIM.sharePrice;
   const frac = (shares * SIM.pctPerAgreement) / SIM.sharesPerAgreement;
 
   const rows = SIM.prospects.map((p) => ({
@@ -24,8 +27,8 @@ export function Simulator() {
     result:
       p.careerPay > 0
         ? "Would have paid " + money(p.careerPay * frac * (1 - SIM.managementFee))
-        : inv > 0
-          ? "You would have lost your " + money(inv)
+        : shown > 0
+          ? "You would have lost your " + money(shown)
           : "Would have paid $0",
   }));
 
@@ -41,7 +44,7 @@ export function Simulator() {
           <div className="sim-slider">
             <label htmlFor={rangeId}>Your investment</label>
             <span className="amount" aria-live="polite">
-              {money(inv)}
+              {money(shown)}
             </span>
             <input
               id={rangeId}
@@ -51,6 +54,7 @@ export function Simulator() {
               max={SIM.max}
               step={SIM.step}
               value={inv}
+              style={{ "--pct": rangePct(inv, SIM.min, SIM.max) } as React.CSSProperties}
               onChange={(e) => setInv(Number(e.target.value))}
               aria-valuetext={money(inv)}
             />
@@ -93,8 +97,8 @@ export function Simulator() {
           </div>
 
           <p className="sim-working">
-            Each share is 1% of his MLB pay divided by 100,000. {money(inv)} buys{" "}
-            {shares.toLocaleString("en-US")} shares, which is {trimPct(frac)}% of his MLB pay,
+            Each share is 1% of his MLB pay divided by 100,000. {money(shown)} buys{" "}
+            {Math.round(shares).toLocaleString("en-US")} shares, which is {trimPct(frac)}% of his MLB pay,
             less a 10% management fee.
           </p>
           <p className="sim-disclaimer">

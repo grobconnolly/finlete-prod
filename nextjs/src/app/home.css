@@ -278,6 +278,10 @@ details[open]>summary svg{transform:rotate(45deg)}
 .sms-form{display:flex;gap:var(--s-2);flex-wrap:wrap}
 .sms-form input{flex:1 1 220px;min-width:0;min-height:48px;padding:0 16px;border:1px solid var(--border-on-dark);border-radius:var(--r-md);font:inherit;background:var(--ink-2);color:var(--text-on-dark)}
 .sms-form input::placeholder{color:var(--text-muted-on-dark)}
+.phone-field{display:flex;gap:var(--s-2);flex:1 1 300px;min-width:0}
+.phone-field input{flex:1 1 180px}
+.phone-cc{flex:0 0 auto;min-height:48px;padding:0 10px;border:1px solid var(--border-on-dark);border-radius:var(--r-md);font:inherit;font-size:var(--fs-small);background:var(--ink-2);color:var(--text-on-dark);font-variant-numeric:tabular-nums}
+.phone-cc:focus{outline:2px solid var(--green-500);outline-offset:2px}
 .sms-form input:focus{outline:2px solid var(--green-500);outline-offset:2px}
 .sms-legal{margin-top:var(--s-3);font-size:var(--fs-micro);color:var(--text-muted-on-dark);max-width:60ch;line-height:1.5}
 .sms-alt{margin-top:var(--s-3);font-size:var(--fs-small)}
@@ -295,7 +299,7 @@ details[open]>summary svg{transform:rotate(45deg)}
 .app-btn small{display:block;font-size:var(--fs-micro);font-weight:500;letter-spacing:.02em;color:var(--text-muted-on-dark);line-height:1.2}
 @media(hover:hover){.app-btn:hover{background:var(--text-on-dark);color:var(--ink)}.app-btn:hover small{color:var(--text-muted)}}
 @media(max-width:960px){.players .wrap,.signup-panel{grid-template-columns:minmax(0,1fr)}.players-card{max-width:520px}.signup-panel{padding:var(--s-5)}.signup-side{justify-items:stretch}}
-@media(max-width:560px){.players-facts>div{grid-template-columns:minmax(0,1fr)}.players-actions .btn{width:100%}.players-actions .btn-primary{font-size:var(--fs-small);padding-inline:12px}.players-photo{aspect-ratio:4 / 3}.signup-panel{padding:var(--s-4);border-radius:var(--r-md)}.sms-form .btn{width:100%}}
+@media(max-width:560px){.phone-field{flex-basis:100%}.players-facts>div{grid-template-columns:minmax(0,1fr)}.players-actions .btn{width:100%}.players-actions .btn-primary{font-size:var(--fs-small);padding-inline:12px}.players-photo{aspect-ratio:4 / 3}.signup-panel{padding:var(--s-4);border-radius:var(--r-md)}.sms-form .btn{width:100%}}
 /* money flow on a light band, so the page alternates: ink hero, light proof, ink athletes, light money, ink simulator */
 .money.light{background:var(--bg);color:var(--ink)}
 .money.light .h2{color:var(--ink)}

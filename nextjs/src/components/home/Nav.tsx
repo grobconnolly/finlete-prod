@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { FinleteLogo } from "@/components/FinleteLogo";
 import { LINKS } from "@/data/home";
+import { NavBehavior } from "@/components/fx/NavBehavior";
 
 export function Nav() {
   return (
     <header className="nav on-dark" id="nav">
+      <NavBehavior />
       <div className="wrap">
         <Link className="brand" href="/" aria-label="Finlete home">
           <FinleteLogo height={24} />

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { offeringFaqs, type Athlete } from "@/data/athletes";
 import { PlusIcon } from "@/components/home/Faq";
+import { AnimatedDetails } from "@/components/fx/AnimatedDetails";
 
 export function OfferingFaq({ a }: { a: Athlete }) {
   return (
@@ -16,13 +17,17 @@ export function OfferingFaq({ a }: { a: Athlete }) {
           </div>
           <div>
             {offeringFaqs(a).map((f) => (
-              <details key={f.q}>
-                <summary>
-                  {f.q}
-                  <PlusIcon />
-                </summary>
+              <AnimatedDetails
+                key={f.q}
+                summary={
+                  <>
+                    {f.q}
+                    <PlusIcon />
+                  </>
+                }
+              >
                 <p>{f.a}</p>
-              </details>
+              </AnimatedDetails>
             ))}
           </div>
         </div>

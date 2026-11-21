@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
+import "@/components/fx/fx.css";
+import { RevealOnScroll } from "@/components/fx/Reveal";
 
 // Variable font with the width axis: the homepage uses font-stretch 105–125%.
 const archivo = Archivo({
@@ -33,7 +35,10 @@ export default function RootLayout({
       lang="en"
       className={`${archivo.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <RevealOnScroll />
+      </body>
     </html>
   );
 }

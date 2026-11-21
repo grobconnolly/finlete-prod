@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { INVESTOR_LOGOS, PRESS_LOGOS, SCOREBOARD, type Logo } from "@/data/home";
+import { CountUp } from "@/components/fx/CountUp";
 
 function LogoRow({ label, logos, group }: { label: string; logos: Logo[]; group: string }) {
   return (
@@ -28,7 +29,9 @@ export function ProofBand() {
         <dl className="scoreboard">
           {SCOREBOARD.map((s) => (
             <div className="sb-cell" key={s.label}>
-              <dd className="sb-num">{s.num}</dd>
+              <dd className="sb-num">
+                <CountUp value={s.num} />
+              </dd>
               <dt className="sb-label">
                 {s.href ? <Link href={s.href}>{s.label}</Link> : s.label}
               </dt>

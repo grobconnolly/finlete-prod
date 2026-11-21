@@ -2,20 +2,12 @@
 
 import { useId, useState, type FormEvent } from "react";
 import { LINKS } from "@/data/home";
+import { COUNTRIES, DEFAULT_COUNTRY, formatNational, nationalDigits, placeholderFor, toE164 } from "@/lib/phone";
 
 type Channel = "sms" | "email";
 type Status = "idle" | "sending" | "done" | "unavailable" | "invalid" | "error";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function normalizePhone(raw: string): string | null {
-  const trimmed = raw.trim();
-  const digits = trimmed.replace(/\D/g, "");
-  if (trimmed.startsWith("+") && digits.length >= 8 && digits.length <= 15) return `+${digits}`;
-  if (digits.length === 10) return `+1${digits}`;
-  if (digits.length === 11 && digits.startsWith("1")) return `+${digits}`;
-  return null;
-}
 
 /**
  * New-athlete alerts. One form, two channels: text by default, email on the
@@ -26,6 +18,8 @@ export function Signup() {
   const inputId = useId();
   const [channel, setChannel] = useState<Channel>("sms");
   const [value, setValue] = useState("");
+  const [country, setCountry] = useState(DEFAULT_COUNTRY);
+  const countryId = useId();
   const [status, setStatus] = useState<Status>("idle");
 
   const isSms = channel === "sms";
@@ -38,7 +32,7 @@ export function Signup() {
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const contact = isSms ? normalizePhone(value) : EMAIL.test(value.trim()) ? value.trim() : null;
+    const contact = isSms ? toE164(value, country) : EMAIL.test(value.trim()) ? value.trim() : null;
     if (!contact) {
       setStatus("invalid");
       return;
@@ -78,18 +72,45 @@ export function Signup() {
                   {isSms ? "Mobile number" : "Email address"}
                 </label>
                 {isSms ? (
-                  <input
-                    key="sms"
-                    id={inputId}
-                    type="tel"
-                    name="phone"
-                    autoComplete="tel"
-                    inputMode="tel"
-                    placeholder="Mobile number"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
-                    aria-invalid={status === "invalid"}
-                  />
+                  <span className="phone-field">
+                    <label className="sr" htmlFor={countryId}>
+                      Country
+                    </label>
+                    <select
+                      id={countryId}
+                      className="phone-cc"
+                      value={country.iso}
+                      onChange={(e) => {
+                        const next = COUNTRIES.find((c) => c.iso === e.target.value) ?? DEFAULT_COUNTRY;
+                        setCountry(next);
+                        setValue(formatNational(nationalDigits(value, next), next));
+                        setStatus("idle");
+                      }}
+                    >
+                      {COUNTRIES.map((c) => (
+                        <option key={c.iso} value={c.iso}>
+                          {c.flag} {c.iso} +{c.code}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      key="sms"
+                      id={inputId}
+                      type="tel"
+                      name="phone"
+                      autoComplete="tel-national"
+                      inputMode="tel"
+                      placeholder={placeholderFor(country)}
+                      value={value}
+                      maxLength={country.code === "1" ? 14 : country.digits + 2}
+                      onChange={(e) => {
+                        setValue(formatNational(nationalDigits(e.target.value, country), country));
+                        if (status === "invalid") setStatus("idle");
+                      }}
+                      aria-invalid={status === "invalid"}
+                      aria-describedby={`${inputId}-hint`}
+                    />
+                  </span>
                 ) : (
                   <input
                     key="email"
@@ -113,7 +134,7 @@ export function Signup() {
 
             {status === "invalid" ? (
               <p className="sms-legal sms-warn" role="alert">
-                {isSms ? "Enter a mobile number with area code." : "Enter a valid email address."}
+                {isSms ? `Enter the full ${country.digits}-digit number for ${country.name}.` : "Enter a valid email address."}
               </p>
             ) : status === "unavailable" ? (
               <p className="sms-legal" role="status">
@@ -125,7 +146,7 @@ export function Signup() {
                 That did not go through. Try again, or email <a href={LINKS.contact}>info@finlete.com</a>.
               </p>
             ) : status === "done" ? null : isSms ? (
-              <p className="sms-legal">
+              <p className="sms-legal" id={`${inputId}-hint`}>
                 By entering your number you agree to receive marketing texts from Finlete. Message and
                 data rates may apply. Reply STOP to opt out.
               </p>

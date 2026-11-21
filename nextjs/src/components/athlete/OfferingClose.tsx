@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { money, type Athlete, careerOf } from "@/data/athletes";
 import { LINKS } from "@/data/home";
+import { ShareButton } from "@/components/fx/ShareButton";
 
 export function OfferingClose({ a }: { a: Athlete }) {
   const o = a.offering;
@@ -28,6 +29,10 @@ export function OfferingClose({ a }: { a: Athlete }) {
               See open offerings
             </Link>
           )}
+          <ShareButton
+            title={`${a.firstName} ${a.lastName} on Finlete`}
+            text={open ? `${careerOf(a)[0].toUpperCase()}${careerOf(a).slice(1)} is open to fan investors on Finlete.` : undefined}
+          />
           <a
             href={`${LINKS.contact}?subject=${encodeURIComponent(`Question about the ${a.lastName} offering`)}`}
           >

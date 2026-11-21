@@ -1,4 +1,5 @@
 import { FAQS } from "@/data/home";
+import { AnimatedDetails } from "@/components/fx/AnimatedDetails";
 
 export function PlusIcon() {
   return (
@@ -26,13 +27,17 @@ export function Faq() {
           </div>
           <div>
             {FAQS.map((f) => (
-              <details key={f.q}>
-                <summary>
-                  {f.q}
-                  <PlusIcon />
-                </summary>
+              <AnimatedDetails
+                key={f.q}
+                summary={
+                  <>
+                    {f.q}
+                    <PlusIcon />
+                  </>
+                }
+              >
                 <p>{f.a}</p>
-              </details>
+              </AnimatedDetails>
             ))}
           </div>
         </div>
