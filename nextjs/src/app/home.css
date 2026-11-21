@@ -323,6 +323,21 @@ details[open]>summary svg{transform:rotate(45deg)}
 .money.light .mbar i:first-child{background:var(--ink)}
 .money.light .mbar i:last-child{background:var(--green-500)}
 .money.light .mbr{border-left-color:var(--rule-strong)}
+/* step 2: the agreement drawn as 100 equal pieces */
+.mpieces{flex:1.7 1 0;min-width:0;border:1px solid var(--border-on-dark);border-radius:var(--r-md);background:var(--ink);padding:var(--s-3) var(--s-4);display:flex;flex-direction:column;justify-content:center;gap:var(--s-2)}
+.pieces{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:3px}
+.pieces i{display:block;aspect-ratio:1;border-radius:2px;background:var(--border-on-dark)}
+.pieces i.mine{background:var(--green-500);box-shadow:0 0 0 2px var(--ink),0 0 0 3px var(--green-500)}
+.pieces-cap{margin:0;font-size:var(--fs-small);line-height:1.45;color:var(--text-muted-on-dark)}
+.pieces-cap b{color:var(--text-on-dark)}
+.pieces-key{display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--green-500);margin-right:4px}
+.mmoney{margin:var(--s-4) 0 0;font-size:var(--fs-body);line-height:1.5;color:var(--text-on-dark);max-width:70ch}
+.money.light .mpieces{background:var(--bg);border-color:var(--rule-strong)}
+.money.light .pieces i{background:var(--rule-strong)}
+.money.light .pieces i.mine{background:var(--green-500);box-shadow:0 0 0 2px var(--bg),0 0 0 3px var(--green-700)}
+.money.light .pieces-cap{color:var(--text-muted)}
+.money.light .pieces-cap b,.money.light .mmoney{color:var(--ink)}
+@media(max-width:860px){.mline .mpieces{flex:none}}
 .money.light .pct{color:var(--ink)}
 .money.light .pct.g{color:var(--green-700)}
 @media(max-width:860px){.money.light .marrow{background:repeating-linear-gradient(180deg,var(--ink) 0 8px,transparent 8px 14px)}.money.light .marrow.g{background:repeating-linear-gradient(180deg,var(--green-700) 0 8px,transparent 8px 14px)}}

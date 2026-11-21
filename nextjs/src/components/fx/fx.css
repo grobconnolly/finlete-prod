@@ -21,6 +21,10 @@
 .sim-range:active::-webkit-slider-thumb,.sim-range:focus-visible::-webkit-slider-thumb{transform:scale(1.12)}
 .pi .sim-range,.light .sim-range{--range-track:var(--rule-strong)}
 
+/* How-it-works step 2: the agreement breaks into its pieces as the row reveals. */
+.mrow.rv .pieces i{opacity:0;transform:scale(.4)}
+.mrow.rv.in .pieces i{opacity:1;transform:none;transition:opacity .3s ease,transform .3s cubic-bezier(.2,.7,.2,1);transition-delay:calc(250ms + var(--i,0) * 6ms)}
+
 /* Numbers that count up: keep width stable while the digits roll. */
 .count{font-variant-numeric:tabular-nums}
 
@@ -36,6 +40,7 @@
 
 @media(prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none;transition:none}
+  .mrow.rv .pieces i,.mrow.rv.in .pieces i{opacity:1;transform:none;transition:none}
   .nav{transition:none}
   .sim-range::-webkit-slider-thumb{transition:none}
   .share-note{transition:none}

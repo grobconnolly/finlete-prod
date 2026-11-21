@@ -49,7 +49,7 @@ export function HowItWorks({ a }: { a: Athlete }) {
             {b
               ? "A pitcher who never reaches MLB earns no MLB pay, so his part of the bundle pays nothing. If none of the six reaches MLB, you lose your entire investment. They owe nothing back."
               : "If he never reaches MLB, there is no MLB pay, so nothing is paid. You lose your entire investment. He owes nothing back."}{" "}
-            <Link href="/#how-it-works">See where the money goes</Link>
+            <Link href="/#how-it-works">See how Finlete works</Link>
           </span>
         </p>
       </div>
