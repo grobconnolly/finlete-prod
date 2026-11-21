@@ -40,6 +40,11 @@ export function Simulator() {
             <h2 className="h2">Investment simulator: it&apos;s 2008</h2>
             <span className="sim-tag">Illustration</span>
           </div>
+          <p className="sim-intro">
+            Imagine it is 2008 and Finlete gave each of these three minor leaguers $100,000 in
+            exchange for 1% of his potential MLB earnings, split into 100,000 shares at $1.00.
+            Pick how much of that you would have put in and see what each career would have paid.
+          </p>
 
           <div className="sim-slider">
             <label htmlFor={rangeId}>Your investment</label>
@@ -97,7 +102,7 @@ export function Simulator() {
           </div>
 
           <p className="sim-working">
-            Each share is 1% of his MLB pay divided by 100,000. {money(shown)} buys{" "}
+            Each share is 1% of his potential MLB earnings divided by 100,000. {money(shown)} buys{" "}
             {Math.round(shares).toLocaleString("en-US")} shares, which is {trimPct(frac)}% of his MLB pay,
             less a 10% management fee.
           </p>
