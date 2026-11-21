@@ -12,7 +12,7 @@ import type { NextConfig } from "next";
  *   /framer/athletes, /framer/escobar, /framer/ornelas, /framer/santos,
  *   /framer/teodo              → public/framer/<slug>/index.html (old pages; the
  *                                React versions live at /<slug>, src/app/[slug])
- *   /about                     → public/about/index.html
+ *   /about                     → React page (src/app/about)
  *   /athlete-landingpage-2026  → public/athlete-landingpage-2026/index.html
  *   /legal/terms-of-service, /legal/privacy-policy
  *                              → React pages (src/app/legal), text in src/data/legal.ts
@@ -37,7 +37,6 @@ const nextConfig: NextConfig = {
     return [
       // Pages still served from their captured HTML: Next.js only serves
       // public files at their exact path, so map the clean URLs.
-      { source: "/about", destination: "/about/index.html" },
       { source: "/athlete-landingpage-2026", destination: "/athlete-landingpage-2026/index.html" },
       // Static redesign prototype lives in public/redesign; Next.js only
       // serves public files at their exact path, so map the clean URL.
