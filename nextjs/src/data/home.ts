@@ -150,7 +150,7 @@ export const PRESS_LOGOS: Logo[] = [
 export const SIM = {
   sharePrice: 1.0,
   min: 0,
-  max: 5000,
+  max: 20000,
   step: 100,
   initial: 3500,
   /** The agreement covers 1% of MLB pay, split into 100,000 shares. */

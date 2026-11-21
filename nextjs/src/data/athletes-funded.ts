@@ -382,7 +382,7 @@ export const FUNDED: Athlete[] = [
         height: 918,
         alt: "Leonardo Bernal batting for Springfield",
       },
-      head: { src: "/img/athletes/bernal-head.webp", width: 320, height: 321 },
+      head: { src: "/img/athletes/bernal-head.webp", width: 320, height: 320 },
     },
   },
   {
