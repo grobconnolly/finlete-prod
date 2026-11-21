@@ -28,7 +28,7 @@ export const FUNDED: Athlete[] = [
     level: "Double-A",
     team: "Los Angeles Dodgers organization",
     highlights: [
-      "No. 24 prospect in baseball (Baseball America)",
+      "No. 23 prospect in baseball",
       "Dodgers No. 7 prospect",
       "2.41 ERA in 2025",
       "81 K in 67.1 IP in 2025",
@@ -460,14 +460,14 @@ export const BUNDLES: Athlete[] = [
     level: "Single-A to MLB",
     team: "Six pitchers, one offering",
     highlights: [
-      "Six pitching prospects",
-      "One investment",
-      "Yankees, Dodgers, Royals, Orioles and Rangers systems",
-      "Includes two pitchers who have reached MLB",
+      "Zazueta, the No. 23 prospect in baseball",
+      "Lagrange, Yankees No. 2 and MLB Top 100",
+      "Four more pitching prospects",
+      "Two have reached MLB",
     ],
     bundle: {
-      members: ["lagrange", "zazueta", "avila", "mejia", "santos", "teodo"],
-      intro: "One investment, a stake in six rising pitchers. You do not have to pick one.",
+      members: ["zazueta", "lagrange", "avila", "mejia", "santos", "teodo"],
+      intro: "One investment, six pitchers: Christian Zazueta, the No. 23 prospect in baseball, Carlos Lagrange, the Yankees' No. 2, and four more arms worth knowing.",
     },
     offering: {
       cartUrl: "https://cart.finlete.com/?id=4381",

@@ -11,7 +11,7 @@ export function Hero() {
             <span className="hero-label">Backed by Finlete fans</span>
             <h1 className="hero-h1">
               <span className="nm">Christian Zazueta.</span>
-              <span className="hero-num">No. 24</span>
+              <span className="hero-num">No. 23</span>
               <span className="tail">prospect in baseball.</span>
             </h1>
             <p className="hero-source">
