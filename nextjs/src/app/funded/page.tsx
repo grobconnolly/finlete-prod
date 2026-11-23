@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "../home.css";
 import "../athlete.css";
-import { FUNDED_OFFERINGS, money } from "@/data/athletes";
+import { FUNDED_OFFERINGS } from "@/data/athletes";
 import { Nav } from "@/components/home/Nav";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { OfferingGrid } from "@/components/athlete/OfferingGrid";
@@ -15,9 +15,12 @@ export const metadata: Metadata = {
 };
 
 export default function FundedPage() {
-  const withTerms = FUNDED_OFFERINGS.filter((a) => a.offering);
-  const totalMax = withTerms.reduce((s, a) => s + (a.offering?.maximumRaise ?? 0), 0);
-  const compact = totalMax >= 1_000_000 ? `$${(totalMax / 1_000_000).toFixed(1)}M` : money(totalMax);
+  const totalRaised = FUNDED_OFFERINGS.reduce((s, a) => s + (a.raised ?? 0), 0);
+  // Short form, so the number fits a third of a phone screen: $606K, $1.2M.
+  const compact =
+    totalRaised >= 1_000_000
+      ? `$${(totalRaised / 1_000_000).toFixed(1)}M`
+      : `$${Math.round(totalRaised / 1000)}K`;
   return (
     <div className="page">
       <a className="skip" href="#main">
@@ -50,7 +53,7 @@ export default function FundedPage() {
               </div>
               <div className="sb-cell">
                 <dd className="sb-num">{compact}</dd>
-                <dt className="sb-label">Combined maximum raise</dt>
+                <dt className="sb-label">Raised in these offerings</dt>
               </div>
               <div className="sb-cell">
                 <dd className="sb-num">{new Set(FUNDED_OFFERINGS.map((a) => a.organization)).size}</dd>
@@ -58,8 +61,8 @@ export default function FundedPage() {
               </div>
             </dl>
             <p className="note micro" style={{ marginTop: 0 }}>
-              Maximum raise is the ceiling each offering filed with the SEC, not the amount finally
-              sold. Final amounts are in each offering&apos;s Form C-U.
+              Raised is the amount sold when each offering closed. Each deal page also shows the
+              maximum the offering filed with the SEC.
             </p>
           </div>
         </section>

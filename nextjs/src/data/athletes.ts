@@ -17,6 +17,8 @@ export type Athlete = {
   badge?: "New";
   /** Month the raise closed, for funded offerings. */
   closed?: string;
+  /** Dollars sold when the offering closed, from DealMaker (the payment log's Total Raised). */
+  raised?: number;
   /** Data that could only be read from an older copy of the page carries its date here. */
   asOf?: string;
   /** Set on the bundle offering: the member athletes' slugs and an intro line. */
