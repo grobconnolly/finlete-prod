@@ -15,9 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function FundedPage() {
-  const withTerms = FUNDED_OFFERINGS.filter((a) => a.offering);
-  const totalMax = withTerms.reduce((s, a) => s + (a.offering?.maximumRaise ?? 0), 0);
-  const compact = totalMax >= 1_000_000 ? `$${(totalMax / 1_000_000).toFixed(1)}M` : money(totalMax);
+  const totalRaised = FUNDED_OFFERINGS.reduce((s, a) => s + (a.raised ?? 0), 0);
   return (
     <div className="page">
       <a className="skip" href="#main">
@@ -49,8 +47,8 @@ export default function FundedPage() {
                 <dt className="sb-label">Offerings fully funded</dt>
               </div>
               <div className="sb-cell">
-                <dd className="sb-num">{compact}</dd>
-                <dt className="sb-label">Combined maximum raise</dt>
+                <dd className="sb-num">{money(totalRaised)}</dd>
+                <dt className="sb-label">Raised in these offerings</dt>
               </div>
               <div className="sb-cell">
                 <dd className="sb-num">{new Set(FUNDED_OFFERINGS.map((a) => a.organization)).size}</dd>
@@ -58,8 +56,8 @@ export default function FundedPage() {
               </div>
             </dl>
             <p className="note micro" style={{ marginTop: 0 }}>
-              Maximum raise is the ceiling each offering filed with the SEC, not the amount finally
-              sold. Final amounts are in each offering&apos;s Form C-U.
+              Raised is the amount sold when each offering closed. Each deal page also shows the
+              maximum the offering filed with the SEC.
             </p>
           </div>
         </section>

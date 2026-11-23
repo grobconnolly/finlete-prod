@@ -8,9 +8,12 @@ export function Terms({ a }: { a: Athlete }) {
   const his = a.bundle ? "their" : "his";
   const cells = [
     { num: money(o.sharePrice, true), label: "Share price" },
-    o.minimumInvestment
-      ? { num: money(o.minimumInvestment, true), label: "Minimum investment" }
-      : { num: money(o.minimumRaise), label: "Minimum raise" },
+    // A closed offering shows what it raised where an open one shows the minimum.
+    !open && a.raised
+      ? { num: money(a.raised), label: "Raised" }
+      : o.minimumInvestment
+        ? { num: money(o.minimumInvestment, true), label: "Minimum investment" }
+        : { num: money(o.minimumRaise), label: "Minimum raise" },
     o.pctOfPay
       ? { num: formatPct(o.pctOfPay), label: `Of ${his} MLB pay` }
       : { num: "6", label: "Pitchers in the bundle" },

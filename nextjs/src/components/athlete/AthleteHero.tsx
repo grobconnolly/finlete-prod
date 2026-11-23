@@ -76,7 +76,12 @@ export function AthleteHero({ a }: { a: Athlete }) {
                   <span className="num">{o ? money(o.sharePrice, true) : "Closed"}</span>
                   <span className="per">{o ? "per share, when open" : ""}</span>
                   <span className="min">
-                    {o ? `Raised up to ${money(o.maximumRaise)}.` : "Terms to follow."} No shares are for sale.
+                    {a.raised
+                      ? `Raised ${money(a.raised)}.`
+                      : o
+                        ? `Raised up to ${money(o.maximumRaise)}.`
+                        : "Terms to follow."}{" "}
+                    No shares are for sale.
                   </span>
                 </div>
                 <div className="ah-invest-actions">

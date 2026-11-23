@@ -44,7 +44,12 @@ export function OfferingGrid({
                   ))}
                 </ul>
                 <p className="ocard-terms">
-                  {a.offering ? (
+                  {!open && a.raised ? (
+                    <>
+                      Raised <b>{money(a.raised)}</b>
+                      {a.closed ? ` · closed ${a.closed}` : ""}
+                    </>
+                  ) : a.offering ? (
                     open ? (
                       <>
                         <b>{money(a.offering.sharePrice, true)}</b> per share
