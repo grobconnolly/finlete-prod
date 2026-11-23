@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "../home.css";
 import "../athlete.css";
-import { FUNDED_OFFERINGS, money } from "@/data/athletes";
+import { FUNDED_OFFERINGS } from "@/data/athletes";
 import { Nav } from "@/components/home/Nav";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { OfferingGrid } from "@/components/athlete/OfferingGrid";
@@ -16,6 +16,11 @@ export const metadata: Metadata = {
 
 export default function FundedPage() {
   const totalRaised = FUNDED_OFFERINGS.reduce((s, a) => s + (a.raised ?? 0), 0);
+  // Short form, so the number fits a third of a phone screen: $606K, $1.2M.
+  const compact =
+    totalRaised >= 1_000_000
+      ? `$${(totalRaised / 1_000_000).toFixed(1)}M`
+      : `$${Math.round(totalRaised / 1000)}K`;
   return (
     <div className="page">
       <a className="skip" href="#main">
@@ -47,7 +52,7 @@ export default function FundedPage() {
                 <dt className="sb-label">Offerings fully funded</dt>
               </div>
               <div className="sb-cell">
-                <dd className="sb-num">{money(totalRaised)}</dd>
+                <dd className="sb-num">{compact}</dd>
                 <dt className="sb-label">Raised in these offerings</dt>
               </div>
               <div className="sb-cell">
