@@ -44,27 +44,15 @@ export function OfferingGrid({
                   ))}
                 </ul>
                 <p className="ocard-terms">
-                  {!open && a.raised ? (
+                  {open && a.offering ? (
                     <>
-                      Raised <b>{money(a.raised)}</b>
-                      {a.closed ? ` · closed ${a.closed}` : ""}
+                      <b>{money(a.offering.sharePrice, true)}</b> per share
+                      {a.offering.minimumInvestment
+                        ? ` · min ${money(a.offering.minimumInvestment, true)}`
+                        : ""}
                     </>
-                  ) : a.offering ? (
-                    open ? (
-                      <>
-                        <b>{money(a.offering.sharePrice, true)}</b> per share
-                        {a.offering.minimumInvestment
-                          ? ` · min ${money(a.offering.minimumInvestment, true)}`
-                          : ""}
-                      </>
-                    ) : (
-                      <>
-                        Raised up to <b>{money(a.offering.maximumRaise)}</b>
-                        {a.closed ? ` · closed ${a.closed}` : ""}
-                      </>
-                    )
                   ) : (
-                    <>Closed offering</>
+                    <>Closed{a.closed ? ` ${a.closed}` : " offering"}</>
                   )}
                 </p>
                 <span className="ocard-cta">{open ? `View ${a.shortName === "the bundle" ? "the bundle" : `${a.lastName}'s offering`}` : "See the deal"}</span>
