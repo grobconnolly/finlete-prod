@@ -3,8 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import type { Athlete } from "@/data/athletes";
 
-/** The Finlete site on Disqus (finlete.disqus.com). */
-const SHORTNAME = "finlete";
+/**
+ * The Finlete site on Disqus (finlete-1.disqus.com), the one the owner's
+ * Disqus login administers. An older site, "finlete", holds a 2024 thread
+ * from the Vargas offering and is not used.
+ */
+const SHORTNAME = "finlete-1";
 /** Threads are keyed by the page's public address, whatever host served it. */
 const SITE = "https://finlete.com";
 
