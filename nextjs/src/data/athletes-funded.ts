@@ -6,9 +6,7 @@
  * share count and maximum raise; the April 2026 copies of the Escobar,
  * Ornelas, Santos and Teodo pages (nextjs/public/framer/<slug>) for stats,
  * statements and posts. Those four pages no longer exist on finlete.com, so
- * anything marked `asOf` is as of that copy. `raised` is each offering's
- * Total Raised in the athlete payment log on 22 November 2026, which matches
- * the funded total in DealMaker.
+ * anything marked `asOf` is as of that copy.
  */
 import type { Athlete } from "./athletes";
 import posts from "./spotlight-extra.json";
@@ -23,7 +21,6 @@ export const FUNDED: Athlete[] = [
     lastName: "Zazueta",
     shortName: "Zazueta",
     status: "funded",
-    raised: 118_460.08,
     closed: "2026",
     organization: "Los Angeles Dodgers",
     position: "Pitcher",
@@ -63,7 +60,6 @@ export const FUNDED: Athlete[] = [
     lastName: "Lagrange",
     shortName: "Lagrange",
     status: "funded",
-    raised: 169_402.82,
     closed: "July 2026",
     organization: "New York Yankees",
     position: "Pitcher",
@@ -103,7 +99,6 @@ export const FUNDED: Athlete[] = [
     lastName: "Escobar",
     shortName: "Escobar",
     status: "funded",
-    raised: 30_403.62,
     closed: "July 2026",
     asOf: FINLETE_APRIL,
     organization: "Philadelphia Phillies",
@@ -168,7 +163,6 @@ export const FUNDED: Athlete[] = [
     lastName: "Ornelas",
     shortName: "Ornelas",
     status: "funded",
-    raised: 10_118.07,
     closed: "June 2026",
     asOf: FINLETE_APRIL,
     organization: "San Diego Padres",
@@ -233,7 +227,6 @@ export const FUNDED: Athlete[] = [
     lastName: "Santos",
     shortName: "Santos",
     status: "funded",
-    raised: 10_522.32,
     closed: "June 2026",
     asOf: FINLETE_APRIL,
     organization: "Texas Rangers",
@@ -299,7 +292,6 @@ export const FUNDED: Athlete[] = [
     lastName: "Teodo",
     shortName: "Teodo",
     status: "funded",
-    raised: 10_668.9,
     closed: "July 2026",
     asOf: FINLETE_APRIL,
     organization: "Texas Rangers",
@@ -365,7 +357,6 @@ export const FUNDED: Athlete[] = [
     lastName: "Bernal",
     shortName: "Bernal",
     status: "funded",
-    raised: 76_286,
     closed: "2025",
     organization: "St. Louis Cardinals",
     position: "Catcher",
@@ -401,7 +392,6 @@ export const FUNDED: Athlete[] = [
     lastName: "Vargas",
     shortName: "Vargas",
     status: "funded",
-    raised: 78_288,
     closed: "2024",
     organization: "Miami Marlins",
     position: "Third base",
@@ -436,7 +426,6 @@ export const FUNDED: Athlete[] = [
     lastName: "Garcia",
     shortName: "Garcia",
     status: "funded",
-    raised: 101_713.04,
     organization: "Pittsburgh Pirates",
     position: "Outfield",
     positionAbbr: "OF",

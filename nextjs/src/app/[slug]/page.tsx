@@ -18,6 +18,7 @@ import { Spotlight } from "@/components/athlete/Spotlight";
 import { Perks } from "@/components/athlete/Perks";
 import { OfferingFaq } from "@/components/athlete/OfferingFaq";
 import { OfferingClose } from "@/components/athlete/OfferingClose";
+import { Discussion } from "@/components/athlete/Discussion";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -64,6 +65,7 @@ export default async function AthletePage({ params }: Props) {
         {a.spotlight?.length ? <Spotlight a={a} /> : null}
         {open && <Perks />}
         <OfferingFaq a={a} />
+        <Discussion a={a} />
         <OfferingClose a={a} />
       </main>
       <SiteFooter perks={open} />

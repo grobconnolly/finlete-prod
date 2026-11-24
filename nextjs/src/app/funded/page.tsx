@@ -15,12 +15,6 @@ export const metadata: Metadata = {
 };
 
 export default function FundedPage() {
-  const totalRaised = FUNDED_OFFERINGS.reduce((s, a) => s + (a.raised ?? 0), 0);
-  // Short form, so the number fits a third of a phone screen: $606K, $1.2M.
-  const compact =
-    totalRaised >= 1_000_000
-      ? `$${(totalRaised / 1_000_000).toFixed(1)}M`
-      : `$${Math.round(totalRaised / 1000)}K`;
   return (
     <div className="page">
       <a className="skip" href="#main">
@@ -52,18 +46,14 @@ export default function FundedPage() {
                 <dt className="sb-label">Offerings fully funded</dt>
               </div>
               <div className="sb-cell">
-                <dd className="sb-num">{compact}</dd>
-                <dt className="sb-label">Raised in these offerings</dt>
+                <dd className="sb-num">25 years</dd>
+                <dt className="sb-label">Of MLB contracts covered</dt>
               </div>
               <div className="sb-cell">
                 <dd className="sb-num">{new Set(FUNDED_OFFERINGS.map((a) => a.organization)).size}</dd>
                 <dt className="sb-label">MLB clubs</dt>
               </div>
             </dl>
-            <p className="note micro" style={{ marginTop: 0 }}>
-              Raised is the amount sold when each offering closed. Each deal page also shows the
-              maximum the offering filed with the SEC.
-            </p>
           </div>
         </section>
 
