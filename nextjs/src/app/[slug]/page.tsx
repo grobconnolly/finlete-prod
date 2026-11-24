@@ -65,7 +65,8 @@ export default async function AthletePage({ params }: Props) {
         {a.spotlight?.length ? <Spotlight a={a} /> : null}
         {open && <Perks />}
         <OfferingFaq a={a} />
-        <Discussion a={a} />
+        {/* The public discussion runs while an offering is open. Funded deals have none. */}
+        {open && <Discussion a={a} />}
         <OfferingClose a={a} />
       </main>
       <SiteFooter perks={open} />
